@@ -1,0 +1,84 @@
+.Base {
+  text-align: center;
+  border-radius: var(--radius-full);
+  user-select: none;
+
+  background-color: var(--comp-bg);
+  color: var(--comp-color);
+
+  transition: var(---duration-medium) var(--easing-quick);
+  /* Weird flashing fix for <a> tags, user agent stylesheet issue */
+  transition-property: opacity, transform, filter, text-decoration,
+    outline-color, background-color;
+
+  line-height: inherit;
+
+  & .Icon {
+    fill: currentColor;
+    width: var(--comp-el-size);
+    height: var(--comp-el-size);
+  }
+
+  & span {
+    height: var(--comp-el-size);
+  }
+
+  &:hover {
+    opacity: 0.85;
+  }
+
+  &:focus-visible {
+    transform: translateY(-0.3rem);
+  }
+}
+
+.size-small {
+  --comp-el-size: var(--size-medium);
+  padding: var(--gap-smaller);
+}
+
+.size-medium {
+  --comp-el-size: var(--size-large);
+  padding: var(--gap-small);
+}
+
+.size-large {
+  --comp-el-size: var(--size-larger);
+  padding: var(--gap-medium);
+}
+
+.variant-primary {
+  --comp-bg: var(--primary);
+  --comp-color: var(--on-primary);
+}
+
+.variant-secondary {
+  --comp-bg: var(--secondary);
+  --comp-color: var(--on-secondary);
+}
+
+.variant-surface-medium {
+  --comp-bg: var(--surface-medium);
+  --comp-color: var(--neutral-high);
+
+  &:is(:hover, :focus-visible) {
+    opacity: unset;
+    --comp-bg: var(--surface-high);
+  }
+}
+
+.variant-surface-low {
+  --comp-bg: var(--surface-low);
+  --comp-color: var(--neutral-high);
+  outline: var(--line-style) var(--surface-medium);
+
+  &:not([aria-disabled="true"], :disabled):is(:hover, :focus-visible) {
+    opacity: unset;
+    --comp-bg: var(--surface-medium);
+    outline-color: var(--surface-high);
+
+    &:focus-visible {
+        outline-color: unset;
+    }
+  }
+}

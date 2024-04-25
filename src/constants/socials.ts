@@ -1,12 +1,25 @@
-export default {
+import IconDiscord from '../assets/icons/discord.svg'
+import IconGitHub from '../assets/icons/github.svg'
+import IconEmail from '../assets/icons/mail.svg'
+
+import type { IconType } from '~/components'
+
+const Socials = {
     github: {
-        title: 'Github profile',
-        icon: 'github',
-        url: 'https://github.com/PalmDevs',
+        name: 'GitHub',
+        href: 'https://github.com/PalmDevs',
+        icon: IconGitHub,
     },
-    email: {
-        title: 'Email',
-        icon: null,
-        url: 'mailto:PalmDevelops+Web@gmail.com',
+    discord: {
+        name: 'Discord',
+        href: 'https://discord.com/users/629368283354628116',
+        icon: IconDiscord,
     },
-} as const satisfies Record<string, { title: string; icon: string | null; url: string }>
+    mail: {
+        name: 'Email',
+        href: 'mailto:PalmDevelops+Web@gmail.com',
+        icon: IconEmail,
+    },
+} as const satisfies Record<string, { name: string; href: string; icon: IconType }>
+
+export default Socials

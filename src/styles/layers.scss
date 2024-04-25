@@ -1,0 +1,22 @@
+:root {
+  --layer-bg: 1;
+  --layer-content: 2;
+  --layer-media: 3;
+  --layer-nav: 5;
+  --layer-overlay: 6;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+span,
+a,
+button {
+  z-index: var(--layer-content);
+}
+
+img, svg {
+  z-index: var(--layer-media);
+}

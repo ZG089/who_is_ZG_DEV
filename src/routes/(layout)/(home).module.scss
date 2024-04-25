@@ -1,0 +1,104 @@
+@use "../../styles/queries";
+
+.DirectTextChildrenCenter {
+  & > * {
+    text-align: center;
+  }
+}
+
+.ProjectsGrid {
+  display: grid;
+  grid-template-columns: 1.5fr 0.75fr 0.25fr 1.5fr;
+  grid-template-rows: 1fr 0.25fr;
+  max-width: 48rem;
+  gap: var(--gap-small);
+  grid-template-areas:
+    "a b b b"
+    "c c d d"
+    "e e e f"
+    "g g h h";
+
+  & > :nth-child(8n + 1) {
+    grid-area: a;
+  }
+
+  & > :nth-child(8n + 2) {
+    grid-area: b;
+  }
+
+  & > :nth-child(8n + 3) {
+    grid-area: c;
+  }
+
+  & > :nth-child(8n + 4) {
+    grid-area: d;
+  }
+
+  & > :nth-child(8n + 5) {
+    grid-area: e;
+  }
+
+  & > :nth-child(8n + 6) {
+    grid-area: f;
+  }
+
+  & > :nth-child(8n + 7) {
+    grid-area: g;
+  }
+
+  & > :nth-child(8n + 8) {
+    grid-area: h;
+  }
+
+  @media (max-width: queries.$mw-mobile) {
+    display: flex;
+    flex-wrap: wrap;
+
+    & > * {
+      min-width: 16rem;
+    }
+  }
+}
+
+.SkillContainer {
+  --interaction-glow: var(--surface-highest);
+  // --interaction-hover-scale: 1.075;
+
+  background-color: var(--surface-low);
+  color: var(--neutral-high);
+  border-radius: var(--radius-medium);
+  text-decoration: none;
+  padding: var(--gap-small);
+  outline: var(--line-style) var(--surface-medium);
+
+  &:where(:hover, :focus-visible) {
+    background-color: var(--surface-medium);
+    outline-color: var(--surface-high);
+  }
+
+  & .SkillIcon {
+    width: var(--size-relative-medium);
+    height: var(--size-relative-medium);
+    object-fit: contain;
+  }
+}
+
+.JSXHeadingStart,
+.JSXHeadingEnd {
+  font-size: 2.25rem;
+  font-weight: var(--weight-bold);
+  font-family: "JetBrains Mono", monospace;
+
+  & > span:is(:first-child, :last-child) {
+    user-select: none;
+  }
+}
+
+.JSXHeadingStart {
+  color: var(--neutral-highest);
+}
+
+.JSXHeadingEnd {
+  user-select: none;
+  color: var(--surface-medium);
+}

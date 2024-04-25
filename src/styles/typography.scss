@@ -1,0 +1,117 @@
+@use "queries";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400..800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap');
+
+:root {
+  --line-height: 1.5;
+
+  --text-display: 3.5em;
+  --text-title: 2.5em;
+  --text-heading: 1.5em;
+  --text-subheading: 1.25em;
+  --text-label: 0.9em;
+  --text: 1.1em;
+
+  --weight-bolder: 800;
+  --weight-bold: 650;
+  --weight-label: 600;
+  --weight-regular: 500;
+  --weight-thin: 400;
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: var(--text);
+  font-weight: var(--weight-regular);
+  line-height: var(--line-height);
+  color: var(--neutral-medium);
+}
+
+/* 
+ * HEADINGS
+ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-block-start: 0;
+  font-weight: var(--weight-bold);
+}
+
+// Large headings have smaller relative bottom margin
+// They will also be balanced to avoid awkward line breaks
+
+h1,
+h2,
+h3 {
+  color: var(--neutral-high);
+  text-wrap: balance;
+  margin-block-end: var(--gap-relative-smaller);
+}
+
+h1 {
+  font-size: var(--text-display);
+  color: var(--neutral-highest);
+}
+
+h2 {
+  font-size: var(--text-title);
+}
+
+h3 {
+  font-size: var(--text-heading);
+}
+
+// Small headings have bigger relative bottom margin
+
+h4,
+h5 {
+  margin-block-end: var(--gap-relative-small);
+}
+
+h4 {
+  color: var(--neutral-medium);
+  font-size: var(--text-subheading);
+}
+
+h5 {
+  color: var(--neutral-lowest);
+  font-size: var(--text-label);
+}
+
+/* 
+ * PARAGRAPHS
+ */
+
+p,
+span {
+  color: inherit;
+}
+
+p {
+  margin-block: var(--gap-relative-small);
+}
+
+strong {
+  font-weight: var(--weight-bold);
+}
+
+code {
+  font-family: "Jetbrains Mono", monospace;
+  font-size: 0.8em;
+}
+
+/*
+ * MOBILE STYLES
+ */
+
+@media (max-width: queries.$mw-mobile) {
+  :root {
+    --text-display: 3em;
+    --text-title: 2em;
+  }
+}

@@ -1,0 +1,97 @@
+.Dock {
+  position: sticky;
+  top: var(--gap-medium);
+  margin-block: var(--gap-medium);
+  overflow-x: auto;
+
+  padding: var(--gap-smaller) var(--gap-small);
+  border-radius: var(--radius-full);
+
+  outline: var(--line-style) transparent;
+
+  transition: var(---duration-short);
+  transition-property: background-color, outline-color;
+
+  &:has(.ActiveLink) .Highlight {
+    opacity: 1;
+  }
+
+  &[data-scrolled="true"] {
+    background-color: var(--surface-low);
+    outline-color: var(--surface-medium);
+
+    // Faking a blur effect
+    opacity: 98%;
+    [data-theme="dark"] & {
+      opacity: 99%;
+    }
+
+    & .Highlight {
+      background-color: var(--surface-high);
+    }
+  }
+}
+
+.DockContainer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: var(--layer-nav);
+}
+
+.Highlight {
+  position: absolute;
+  // Linked to padding of .Dock
+  left: var(--gap-small);
+
+  z-index: var(--layer-bg);
+  background-color: var(--surface-medium);
+  border-radius: var(--radius-full);
+
+  // Default opacity (hidden)
+  opacity: 0;
+
+  transition: all var(---duration-medium) var(--easing-bounce);
+  transition-delay: var(---duration-shorter);
+}
+
+.Link {
+  padding: var(--gap-smaller) var(--gap-small);
+  border-radius: var(--radius-full);
+  background-color: transparent;
+  color: var(--neutral-high);
+
+  font: inherit;
+  font-weight: var(--weight-label);
+  text-decoration: none;
+
+  transition: all var(---duration-short) var(--easing-quick);
+
+  &:not(.ActiveLink):is(:hover, :active) {
+    background-color: var(--surface-low);
+    [data-scrolled="true"] & {
+      background-color: var(--surface-medium);
+    }
+  }
+
+  & > .Icon {
+    width: var(--size-medium);
+    height: var(--size-medium);
+
+    fill: currentColor;
+    opacity: 1;
+  }
+}
+
+.IconLink {
+  padding: var(--gap-smaller);
+}
+
+.Link:hover,
+.Link:active,
+.ActiveLink {
+  color: var(--neutral-highest);
+}

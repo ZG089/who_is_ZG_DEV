@@ -1,0 +1,10 @@
+.GradientText {
+  @media not (prefers-contrast: more) {
+    font-weight: var(--weight-l);
+    color: black;
+    background: var(--gradient);
+    background-clip: text;
+    -webkit-bg-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}

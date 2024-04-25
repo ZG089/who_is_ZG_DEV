@@ -1,0 +1,106 @@
+@import url("./styles/typography.scss");
+@import url("./styles/themes.scss");
+@import url("./styles/constants.scss");
+
+:root {
+  --themeable-prop-content: color, fill, stroke-color, font-weight;
+  --themeable-prop-layout: background-color, outline-color, border-color,
+    box-shadow;
+}
+
+p,
+span,
+a,
+button,
+input,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+svg {
+  transition-duration: 0.1s;
+  transition-property: var(--themeable-prop-content),
+    var(--themeable-prop-layout);
+}
+
+body,
+div,
+section,
+nav,
+footer,
+main {
+  transition-duration: 0.15s;
+  transition-property: var(--themeable-prop-layout);
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  // Fixes precision issues with outline
+  outline-offset: -1px;
+}
+
+html {
+  color-scheme: dark light;
+  scroll-behavior: smooth;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  background-color: var(--bg);
+}
+
+button,
+input,
+a {
+  border: none;
+  color: inherit;
+  font: inherit;
+}
+
+input,
+button {
+  font-size: var(--text-label);
+}
+
+ul:not([role="list"]) {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+// Disabling animations for users who prefer reduced motion
+// or in print mode
+@media (prefers-reduced-motion: reduce), print {
+  * {
+    scroll-behavior: auto !important;
+    animation-duration: 0ms !important;
+    transition-duration: 0ms !important;
+  }
+}
+
+// Disabled elements will always have 50% opacity
+
+:disabled,
+[aria-disabled="true"] {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+  user-select: none !important;
+}
+
+// Focused elements will have a 2px outline with a bright color
+
+// Fixes outline animating weirdly
+:where(:is(button, a):not(:focus-visible)) {
+  outline: var(--line-style) transparent;
+  outline-offset: -2px;
+}
+
+:focus-visible {
+  outline: var(--line-style) var(--neutral-highest) !important;
+}

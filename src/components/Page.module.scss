@@ -1,115 +1,84 @@
-// NavRail
+@use "../styles/queries";
 
-// TODO: Exit animation
-.NavRailSkipNavButton {
-    position: absolute;
-    top: -1000px;
-
-    &:focus-visible {
-        top: 0;
-        position: initial;
-        transform: none !important;
-        padding: 0.75rem;
-        font-size: 0.9rem;
-    }
+:global(main) {
+  @media not (prefers-reduced-motion: reduce) {
+    animation: slideFadeIn var(---duration-medium) var(--easing);
+  }
 }
 
-.NavRailTop {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
+:global(#content) {
+  padding: var(--gap-larger);
+
+  // Mobile will have larger padding so it isn't as close to screen edges
+  @media (max-width: queries.$mw-mobile) {
+    padding: var(--gap-large);
+  }
+
+  align-items: stretch;
 }
 
-.NavRailTop > hr {
-    width: 4rem;
-    border: var(--divider) 2px solid;
-    border-radius: 1rem;
-}
-
-// Page
-
-.Content {
-    flex: 1;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.ContentWrapper {
-    align-items: stretch;
-}
-
+// TODO: Put these as a constant?
 .Section {
-    align-items: center;
-    display: flex;
-    max-width: 80rem;
-    margin-inline: 4rem;
-    padding-block: 4rem;
-    gap: 4rem;
-
-    @media (max-width: 47rem) {
-        & .SectionTextContent {
-            align-items: flex-start;
-            & > * {
-                text-align: start;
-                text-wrap: initial;
-            }
-        }
-    }
+  max-width: 48rem;
+  padding-block: min(6vh, var(--gap-very-large))
 }
 
-.SectionContent {   
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+.FH-Row, .FH-Col {
+  display: flex;
 }
 
-.SectionImage {
-    max-width: 16rem;
+.FH-Col {
+  flex-direction: column;
 }
 
-.LargeSection {
-    padding-block-start: max(10vh, 8rem);
-    padding-block-end: max(12.5vh, 12rem);
-
-    & .SectionTextContent {
-        align-items: flex-start;
-        & > * {
-            text-align: start;
-            text-wrap: balance;
-        }
-    }
+.FH-FW {
+  flex-wrap: wrap;
 }
 
-.SectionTextContent {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    gap: 0.25rem;
-
-    & > * {
-        text-align: center;
-    }
+.FH-FF {
+  flex: 1;
 }
 
-.SectionButtons {   
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
+.FH-JC {
+  justify-content: center;
 }
 
-@media (max-width: 55rem) {
-    .Section {
-        // TODO: Fix this maybe?
-        flex-direction: column-reverse !important;
-        align-items: start;
-        gap: 1rem;
-    }
+.FH-AC {
+  align-items: center;
+}
 
-    .SectionImage {
-        max-height: 16rem;
-    }
+.G-xs {
+  gap: var(--gap-smaller);
+}
+
+.G-sm {
+  gap: var(--gap-small);
+}
+
+.G-md {
+  gap: var(--gap-medium);
+}
+
+.G-lg {
+  gap: var(--gap-large);
+}
+
+.G-xl {
+  gap: var(--gap-larger);
+}
+
+.G-xxl {
+  gap: var(--gap-very-large);
+}
+
+.G-xxxl {
+  gap: var(--gap-insanely-large);
+}
+
+@keyframes slideFadeIn {
+  from {
+    opacity: 0;
+    // TODO: Put this as a constant?
+    transform: translateY(4rem);
+  }
 }

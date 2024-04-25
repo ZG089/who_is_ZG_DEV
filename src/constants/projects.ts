@@ -1,40 +1,35 @@
-import type { ProjectCardProps } from '~/components/content/ProjectCard'
+import type { ProjectCardProps } from '~/components/ProjectCard'
 
-export default [
+const Projects = [
+    {
+        name: 'My Website',
+        description: "You're on it right now. Thanks for checking it out!",
+        href: 'https://github.com/PalmDevs/website',
+        image: '/assets/images/projects/website.svg',
+        hint: 'View repository',
+    },
     {
         name: 'ReVanced',
         description:
-            'ReVanced is a patcher used to modify Android applications. It also allows long-lasting patches to be created with little maintainance.',
-        level: 'Organization member',
-        jobs: ['UI/UX', 'CI', 'Bots'],
+            'A patcher to modify Android applications, allowing for long-lasting patches to be created with little maintainance.',
+        image: '/assets/images/projects/revanced.svg',
         href: 'https://revanced.app',
-        image: '/assets/projects/revanced.svg',
-        hintText: 'Visit ReVanced.app',
-    },
-    {
-        name: 'My Website',
-        description:
-            "You're on it right now! This took way too long to design and create. If you enjoyed it, please leave a star on the repository. It really means a lot!",
-        href: 'https://github.com/PalmDevs/website',
-        image: '/assets/projects/website.svg',
-        hintText: 'View repository',
+        hint: 'Visit website',
     },
     {
         name: 'DataBackup',
-        description:
-            'A free and open-source data backup solution for rooted Android devices. The new redesign by me is slowly progressing in the background.',
+        description: 'Free and open-source data backup solution for Android devices.',
         href: 'https://github.com/XayahSuSuSu/Android-DataBackup',
-        level: 'Lead designer',
-        jobs: ['UI/UX'],
-        image: '/assets/projects/data_backup.svg',
-        hintText: 'View repository',
+        image: '/assets/images/projects/data_backup.svg',
+        hint: 'View repository',
     },
     {
         name: 'Other projects',
-        description:
-            "You can find my other projects on my GitHub. You can also find my contributions to other projects there. Let's explore a bit!",
+        description: "My other projects and contributions are on GitHub. Let's explore!",
         href: 'https://github.com/PalmDevs',
-        image: '/assets/projects/other.svg',
-        hintText: 'View GitHub profile',
+        image: '/assets/images/projects/other.svg',
+        hint: 'Explore on GitHub',
     },
-] as const satisfies Array<ProjectCardProps>
+] as const satisfies ProjectCardProps[]
+
+export default Projects

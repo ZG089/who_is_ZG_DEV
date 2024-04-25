@@ -1,27 +1,27 @@
 {
-  "name": "website",
+  "name": "@palmdevs/website",
   "type": "module",
   "license": "GPL-3.0-or-later",
   "scripts": {
     "dev": "vinxi dev",
     "build": "vinxi build",
-    "start": "vinxi start"
+    "start": "vinxi start",
+    "version": "vinxi version"
   },
   "dependencies": {
-    "@babel/plugin-syntax-import-attributes": "^7.23.3",
-    "@solidjs/meta": "^0.29.3",
-    "@solidjs/router": "0.12.3",
-    "@solidjs/start": "^0.5.0",
-    "solid-js": "^1.8.12",
-    "vinxi": "^0.2.1",
-    "vite-plugin-solid-svg": "^0.8.0"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^1.5.3",
-    "sass": "^1.70.0",
-    "typescript": "^5.3.3"
+    "@solidjs/meta": "^0.29.2",
+    "@solidjs/router": "^0.13.1",
+    "@solidjs/start": "^1.0.0-rc.0",
+    "solid-js": "^1.8.16",
+    "vinxi": "^0.3.10",
+    "vite-plugin-solid-svg": "^0.8.1"
   },
   "engines": {
-    "node": ">=20"
-  }
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.6.4",
+    "sass": "^1.74.1"
+  },
+  "trustedDependencies": ["@biomejs/biome", "esbuild"]
 }
