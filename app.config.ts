@@ -8,11 +8,8 @@ export default defineConfig({
             crawlLinks: true,
             failOnError: true,
         },
-        rollupConfig: {
-            external: ['__STATIC_CONTENT_MANIFEST', 'node:async_hooks'],
-        },
     },
     vite: {
         plugins: [svgPlugin({ defaultAsComponent: true })],
-    }
+    },
 })
