@@ -4,7 +4,8 @@ import { execSync, spawnSync } from 'child_process'
 
 const defineString = (str?: string) => `"${str || 'unknown'}"`
 
-const integrityCheck = spawnSync('git', ['diff-index', 'HEAD', '--quiet'], { stdio: 'ignore', timeout: 5000 })
+const integrityCheckItems = ['public', 'src', './app.config.ts', './bun.lockb']
+const integrityCheck = spawnSync('git', ['diff-index', 'HEAD', '--quiet', ...integrityCheckItems], { stdio: 'ignore', timeout: 5000 })
 const integrityResult = integrityCheck.status === 0 ? 'clean' : integrityCheck.status !== null ? 'dirty' : 'unknown'
 
 export default defineConfig({
