@@ -7,10 +7,15 @@ const ErrorPage: Component<{ error: unknown; reset: () => void }> = props => {
             <h1>Something went very wrong</h1>
             <p>
                 Try refreshing the page. If that still doesn't work, you can report an issue{' '}
-                <a target="_blank" rel="noreferrer" style="color: var(--primary)" href={RepositoryLinks.issues}>here</a>.
+                <a target="_blank" rel="noreferrer" style="color: var(--primary)" href={RepositoryLinks.issues}>
+                    here
+                </a>
+                .
             </p>
             <h4>Stack trace (include this in the bug report):</h4>
-            <code id="error-page__stack">{String(props.error)}</code>
+            <code id="error-page__stack">
+                {props.error instanceof Error ? formatError(props.error) : JSON.stringify(props.error)}
+            </code>
             <div id="error-page__buttons">
                 <button
                     type="button"
@@ -19,12 +24,20 @@ const ErrorPage: Component<{ error: unknown; reset: () => void }> = props => {
                 >
                     Reload
                 </button>
-                <button type="button" onClick={props.reset} style="background: var(--secondary); color: var(--on-secondary)">
+                <button
+                    type="button"
+                    onClick={props.reset}
+                    style="background: var(--secondary); color: var(--on-secondary)"
+                >
                     Try a re-render (won't reload the site)
                 </button>
             </div>
         </main>
     )
+}
+
+const formatError = (error: Error) => {
+    return `${error.name}: ${error.message}\n${error.stack}`
 }
 
 export default ErrorPage
