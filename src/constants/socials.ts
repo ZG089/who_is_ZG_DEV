@@ -17,7 +17,7 @@ const Socials = {
     },
     mail: {
         name: 'Email',
-        href: 'mailto:PalmDevelops+Web@gmail.com',
+        href: 'mailto:contact+web@palmdevs.me',
         icon: IconEmail,
     },
 } as const satisfies Record<string, { name: string; href: string; icon: IconType }>
