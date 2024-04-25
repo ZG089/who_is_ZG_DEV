@@ -12,7 +12,8 @@
       },
       "style": {
         "noNonNullAssertion": "off",
-        "useEnumInitializers": "off"
+        "useEnumInitializers": "off",
+        "useNodejsImportProtocol": "off"
       }
     }
   },
