@@ -3,11 +3,10 @@
   "type": "module",
   "license": "GPL-3.0-or-later",
   "scripts": {
-    "dev": "vinxi dev",
-    "build": "vinxi build",
+    "dev": "NODE_ENV=development vinxi dev",
+    "build": "NODE_ENV=production vinxi build",
     "start": "vinxi start",
-    "version": "vinxi version",
-    "build:preview": "NITRO_PRESET=cloudflare_pages vinxi build"
+    "version": "vinxi version"
   },
   "dependencies": {
     "@solidjs/meta": "^0.29.2",
