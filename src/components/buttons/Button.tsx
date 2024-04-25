@@ -27,6 +27,7 @@ const LinkButton: Component<LinkButtonProps> = props => (
         asProps={{
             as: 'a',
             target: undefinedIf(props.openInCurrentTab, '_blank'),
+            rel: undefinedIf(props.openInCurrentTab, 'noreferrer'),
             href: undefinedIf(props.disabled, props.href),
             centerHorizontal: true,
             centerVertical: true,

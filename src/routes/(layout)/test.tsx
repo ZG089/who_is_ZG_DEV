@@ -24,9 +24,18 @@ export default (() => {
     return (
         <Page>
             <Column gap="xxxl">
-                <Button onClick={theme.cycle}>
-                    Cycle theme (currently <code>{theme.theme()}</code>)
-                </Button>
+                <Row>
+                    <Button onClick={theme.cycle}>
+                        Cycle theme (currently <code>{theme.theme()}</code>)
+                    </Button>
+                    <Button
+                        onClick={() => {
+                            throw new Error('Intentional error')
+                        }}
+                    >
+                        Throw intentional error
+                    </Button>
+                </Row>
                 <Row centerHorizontal wrap gap="xxxl">
                     <Section constrainSize>
                         <Column gap="none">

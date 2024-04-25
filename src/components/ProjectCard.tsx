@@ -16,6 +16,7 @@ const ProjectCard: Component<ProjectCardProps> = props => {
             asProps={{
                 as: 'a',
                 target: '_blank',
+                rel: 'noreferrer',
             }}
             class={styles.Card}
             withInteractionGlow

@@ -21,6 +21,7 @@ const LinkIconButton: Component<LinkIconButtonProps> = props => {
             as={Column}
             asProps={{ as: 'a' }}
             target={undefinedIf(props.openInCurrentTab, '_blank')}
+            rel={undefinedIf(props.openInCurrentTab, 'noreferrer')}
             {...transformProps(props)}
         >
             <props.icon aria-hidden="true" class={styles.Icon} />
