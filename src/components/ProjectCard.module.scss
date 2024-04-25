@@ -38,9 +38,11 @@
   background-color: var(--surface-medium);
   border-radius: var(--radius-larger);
   transition: inherit;
+  transition-property: background-color;
 
   & > img {
     transition: inherit;
+    transition-property: transform;
     width: 8rem;
     height: 8rem;
     object-fit: contain;

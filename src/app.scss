@@ -3,7 +3,7 @@
 @import url("./styles/constants.scss");
 
 :root {
-  --themeable-prop-content: color, fill, stroke-color, font-weight;
+  --themeable-prop-content: color, fill, stroke-color;
   --themeable-prop-layout: background-color, outline-color, border-color,
     box-shadow;
 }
@@ -20,6 +20,7 @@ h4,
 h5,
 h6,
 hr,
+img,
 svg {
   transition-duration: 0.1s;
   transition-property: var(--themeable-prop-content),
