@@ -8,6 +8,7 @@ import { undefinedIf } from '~/utils'
 
 import IconSource from '~/assets/icons/source.svg'
 import { ThemeContext } from '~/contexts'
+import { RepositoryLinks } from '~/constants/links'
 
 export default (() => {
     const theme = useContext(ThemeContext)
@@ -34,6 +35,9 @@ export default (() => {
                         }}
                     >
                         Throw intentional error
+                    </Button>
+                    <Button disabled>
+                        Version: {__APP_BRANCH}.{__APP_COMMIT}-{__APP_DEPLOY_CONTEXT} ({__APP_INTEGRITY})
                     </Button>
                 </Row>
                 <Row centerHorizontal wrap gap="xxxl">
@@ -101,6 +105,11 @@ export default (() => {
                                             icon: IconSource,
                                         },
                                         {
+                                            name: 'Blog',
+                                            href: '/blog',
+                                            icon: IconSource,
+                                        },
+                                        {
                                             name: 'Test',
                                             href: '/test',
                                             icon: IconSource,
@@ -108,6 +117,13 @@ export default (() => {
                                         {
                                             name: '404',
                                             href: '/404',
+                                            icon: IconSource,
+                                        },
+                                    ]}
+                                    links={[
+                                        {
+                                            name: 'Source code',
+                                            href: RepositoryLinks.landing,
                                             icon: IconSource,
                                         },
                                     ]}
