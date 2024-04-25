@@ -20,5 +20,5 @@ export const ThemeCycleMap: Record<ThemeTheme, ThemeTheme> = {
 export const ThemeSwitchHintMap: Record<ThemeTheme, string> = {
     auto: 'Switch to your system theme',
     light: 'Switch to light theme',
-    dark: 'Switch to dark theme'
+    dark: 'Switch to dark theme',
 } as const

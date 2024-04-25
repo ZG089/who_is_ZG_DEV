@@ -1,4 +1,4 @@
-import { type Accessor, createContext, createSignal, createEffect, type Component, type JSX, onCleanup } from 'solid-js'
+import { type Accessor, type Component, type JSX, createContext, createEffect, createSignal, onCleanup } from 'solid-js'
 import { ThemeCycleMap } from './constants/theme'
 
 export const ThemeContext = createContext<ThemeStruct>({
@@ -6,7 +6,7 @@ export const ThemeContext = createContext<ThemeStruct>({
     colorScheme: () => 'light' as const,
     set: () => {},
     cycle: () => {},
-    initialized: () => false
+    initialized: () => false,
 })
 
 export const ThemeProvider: Component<{ children: JSX.Element | JSX.Element[] }> = props => {
@@ -50,7 +50,7 @@ export const ThemeProvider: Component<{ children: JSX.Element | JSX.Element[] }>
                 theme: theme,
                 set: themeSetHandler,
                 cycle: () => themeSetHandler(ThemeCycleMap[theme()]),
-                initialized: initialized
+                initialized: initialized,
             }}
         >
             {props.children}

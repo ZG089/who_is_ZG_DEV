@@ -1,7 +1,7 @@
 import { mergeProps, splitProps } from 'solid-js'
+import { combineClassNames, undefinedIf } from '~/utils'
 import { Row } from '../Page'
 import Touchable from '../Touchable'
-import { combineClassNames, undefinedIf } from '~/utils'
 
 import type { Component, ComponentProps, JSX } from 'solid-js'
 import type { IconType } from '..'
@@ -59,7 +59,7 @@ const transformProps = <T extends ButtonProps | LinkButtonProps>(props: T) => {
             gap: 'xs',
             tabIndex: undefinedIf(!props.disabled, -1),
             disabled: Boolean(props.disabled),
-            'aria-disabled': Boolean(props.disabled)
+            'aria-disabled': Boolean(props.disabled),
         },
         compProps,
         {

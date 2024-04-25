@@ -1,7 +1,7 @@
 import { type Component, For, useContext } from 'solid-js'
 import { createStore } from 'solid-js/store'
 
-import { Button, Column, IconButton, type IconType, NavDock, Page, Row, Section, LinkButton } from '~/components'
+import { Button, Column, IconButton, type IconType, LinkButton, NavDock, Page, Row, Section } from '~/components'
 import { HoverZoomRepel } from '~/components/effects'
 
 import { undefinedIf } from '~/utils'
@@ -24,7 +24,9 @@ export default (() => {
     return (
         <Page>
             <Column gap="xxxl">
-                <Button onClick={theme.cycle}>Cycle theme (currently <code>{theme.theme()}</code>)</Button>
+                <Button onClick={theme.cycle}>
+                    Cycle theme (currently <code>{theme.theme()}</code>)
+                </Button>
                 <Row centerHorizontal wrap gap="xxxl">
                     <Section constrainSize>
                         <Column gap="none">
@@ -105,7 +107,7 @@ export default (() => {
                             <Column>
                                 <h3>Buttons</h3>
                                 <Row>
-                                <For each={['primary', 'secondary', 'tertiary'] as const}>
+                                    <For each={['primary', 'secondary', 'tertiary'] as const}>
                                         {variant => (
                                             <Button {...buttonProps} variant={variant}>
                                                 {variant}
@@ -114,7 +116,7 @@ export default (() => {
                                     </For>
                                     <For each={['primary', 'secondary', 'tertiary'] as const}>
                                         {variant => (
-                                            <LinkButton href='https://example.com' {...buttonProps} variant={variant}>
+                                            <LinkButton href="https://example.com" {...buttonProps} variant={variant}>
                                                 {variant}
                                             </LinkButton>
                                         )}

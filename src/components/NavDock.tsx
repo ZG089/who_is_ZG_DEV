@@ -1,14 +1,14 @@
 import { A, useIsRouting } from '@solidjs/router'
+import { For, Show, createEffect, createMemo, onCleanup, onMount, useContext } from 'solid-js'
 import { Dynamic } from 'solid-js/web'
-import { For, Show, useContext, createEffect, onCleanup, onMount, createMemo } from 'solid-js'
 
 import { Column, Row } from './Page'
 import Touchable from './Touchable'
 
 import ThemeSyncing from '~/assets/icons/nav/theme_syncing.svg'
 
-import { ThemeContext } from '~/contexts'
 import { ThemeCycleMap, ThemeIconMap, ThemeSwitchHintMap } from '~/constants/theme'
+import { ThemeContext } from '~/contexts'
 
 import type { Component } from 'solid-js'
 import type { FlexHelperProps, IconType } from '.'
@@ -141,11 +141,7 @@ const ThemeSwitchNavButton: Component = () => {
             centerVertical
         >
             <Dynamic
-                component={
-                    themeContext.initialized()
-                        ? ThemeIconMap[theme()]
-                        : ThemeSyncing
-                }
+                component={themeContext.initialized() ? ThemeIconMap[theme()] : ThemeSyncing}
                 aria-hidden="true"
                 class={styles.Icon}
             />

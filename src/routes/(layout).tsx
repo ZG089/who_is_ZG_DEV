@@ -1,6 +1,6 @@
+import IconBlog from '~/assets/icons/nav/blog.svg'
 import IconHome from '~/assets/icons/nav/home.svg'
 import IconSource from '~/assets/icons/source.svg'
-import IconBlog from '~/assets/icons/nav/blog.svg'
 
 import NavDock from '~/components/NavDock'
 

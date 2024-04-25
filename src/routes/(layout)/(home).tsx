@@ -1,8 +1,8 @@
 import { type Component, For, Show } from 'solid-js'
 import { Column, LinkButton, LinkIconButton, Page, ProjectCard, Row, Section, Touchable } from '~/components'
 
-import IconMail from '~/assets/icons/mail.svg'
 import IconDiscord from '~/assets/icons/discord.svg'
+import IconMail from '~/assets/icons/mail.svg'
 
 import Projects from '~/constants/projects'
 import Skills from '~/constants/skills'
