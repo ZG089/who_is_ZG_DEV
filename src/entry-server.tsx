@@ -18,9 +18,9 @@ export default createHandler(() => (
                     <meta property="og:image:type" content="image/webp" />
                     {assets}
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
-                    <meta name="theme-color" content="#16181b" />
+                    <meta name="theme-color" content="#4ac9ff" />
                     <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon-variants/apple-touch-icon.png" />
-                    <link rel="mask-icon" href="/assets/favicon-variants/safari-pinned-tab.svg" color="#30a3a3" />
+                    <link rel="mask-icon" href="/assets/favicon-variants/safari-pinned-tab.svg" color="#006fe9" />
                     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-variants/favicon-16x16.png" />
                     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-variants/favicon-32x32.png" />
                     <link rel="icon" href="/favicon.ico" />
@@ -37,17 +37,14 @@ export default createHandler(() => (
                     />
                     <link rel="preconnect" href="https://fonts.gstatic.com" as="font" />
                 </head>
-                <script>let FF_FOUC_FIX_ONE;</script>
                 <script>
                     document.documentElement.dataset.theme = localStorage.getItem('theme_override') ??
                     (matchMedia('(prefers-color-scheme:light)').matches ? 'light' : 'dark')
                 </script>
                 <body>
-                    <script>let FF_FOUC_FIX_TWO;</script>
                     <noscript>You will need to enable JavaScript to run this site.</noscript>
-                    {scripts}
                     {children}
-                    <script>let FF_FOUC_FIX_THREE;</script>
+                    {scripts}
                 </body>
             </html>
         )}
