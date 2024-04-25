@@ -1,10 +1,7 @@
 const Repository = {
-    Landing: 'https://github.com/PalmDevs/website',
-    get Issues() {
-        return `${this.Landing}/issues`
-    },
-    get CreateIssues() {
-        return `${this.Issues}/new`
+    landing: 'https://github.com/PalmDevs/website',
+    get issues() {
+        return `${this.landing}/issues`
     },
 } as const
 

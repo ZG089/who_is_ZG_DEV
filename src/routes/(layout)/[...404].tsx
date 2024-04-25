@@ -23,7 +23,7 @@ export default (() => (
                         <LinkButton leadingIcon={IconHome} openInCurrentTab href="/">
                             Go back home
                         </LinkButton>
-                        <LinkButton variant="secondary" leadingIcon={IconReport} href={RepositoryLinks.CreateIssues}>
+                        <LinkButton variant="secondary" leadingIcon={IconReport} href={RepositoryLinks.issues}>
                             Report an issue
                         </LinkButton>
                     </Row>
