@@ -11,7 +11,8 @@ export default createHandler(() => (
                     <meta
                         name="description"
                         content="Hey there, I'm Palm! I'm a 15-year-old self-taught full-stack developer and a UI/UX designer. I want to make useful things look good and accessible to everyone. I am known for working and contributing to things in the open-source world, and designing applications."
-                    />
+                        />
+                    {assets}
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <meta name="theme-color" content="#16181b" />
                     <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon-variants/apple-touch-icon.png" />
@@ -31,7 +32,6 @@ export default createHandler(() => (
                         as="style"
                     />
                     <link rel="preconnect" href="https://fonts.gstatic.com" as="font" />
-                    {assets}
                 </head>
                 <script>
                     document.documentElement.dataset.theme = localStorage.getItem('theme_override') ??
@@ -39,8 +39,8 @@ export default createHandler(() => (
                 </script>
                 <body>
                     <noscript>You will need to enable JavaScript to run this site.</noscript>
-                    {children}
                     {scripts}
+                    {children}
                 </body>
             </html>
         )}
