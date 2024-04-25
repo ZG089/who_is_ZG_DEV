@@ -10,8 +10,12 @@ export default createHandler(() => (
                     <title>Palm (PalmDevs)</title>
                     <meta
                         name="description"
-                        content="Hey there, I'm Palm! I'm a 15-year-old self-taught full-stack developer and a UI/UX designer. I want to make useful things look good and accessible to everyone. I am known for working and contributing to things in the open-source world, and designing applications."
-                        />
+                        content="I'm Palm! I'm a 15-year-old self-taught full-stack developer and a UI/UX designer. I want to make useful things look good and accessible to everyone. I am known for working and contributing to things in the open-source world, and designing applications."
+                    />
+                    <meta property="og:image" content="/assets/og/image.webp" />
+                    <meta property="og:image:width" content="500" />
+                    <meta property="og:image:height" content="500" />
+                    <meta property="og:image:type" content="image/webp" />  
                     {assets}
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <meta name="theme-color" content="#16181b" />
