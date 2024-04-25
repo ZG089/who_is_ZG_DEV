@@ -115,6 +115,7 @@ main#error-page {
 #error-page__stack {
   outline: var(--line-style) red;
   background-color: var(--surface-medium);
+  white-space: pre-wrap;
 }
 
 #error-page__buttons {

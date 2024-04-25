@@ -37,7 +37,7 @@ const ErrorPage: Component<{ error: unknown; reset: () => void }> = props => {
 }
 
 const formatError = (error: Error) => {
-    return `${error.name}: ${error.message}\n${error.stack}`
+    return `${error.name}: ${error.message}\n\n${error.stack}`
 }
 
 export default ErrorPage

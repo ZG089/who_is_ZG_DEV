@@ -37,14 +37,17 @@ export default createHandler(() => (
                     />
                     <link rel="preconnect" href="https://fonts.gstatic.com" as="font" />
                 </head>
+                <script>let FF_FOUC_FIX_ONE;</script>
                 <script>
                     document.documentElement.dataset.theme = localStorage.getItem('theme_override') ??
                     (matchMedia('(prefers-color-scheme:light)').matches ? 'light' : 'dark')
                 </script>
                 <body>
+                    <script>let FF_FOUC_FIX_TWO;</script>
                     <noscript>You will need to enable JavaScript to run this site.</noscript>
                     {scripts}
                     {children}
+                    <script>let FF_FOUC_FIX_THREE;</script>
                 </body>
             </html>
         )}
