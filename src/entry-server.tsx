@@ -19,10 +19,10 @@ export default createHandler(() => (
                     {assets}
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <meta name="theme-color" content="#4ac9ff" />
-                    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon-variants/apple-touch-icon.png" />
-                    <link rel="mask-icon" href="/assets/favicon-variants/safari-pinned-tab.svg" color="#006fe9" />
-                    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-variants/favicon-16x16.png" />
-                    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-variants/favicon-32x32.png" />
+                    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
+                    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#006fe9" />
+                    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
+                    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
                     <link rel="icon" href="/favicon.ico" />
                     <link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
                     <link
