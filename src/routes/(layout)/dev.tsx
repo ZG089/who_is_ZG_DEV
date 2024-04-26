@@ -34,7 +34,7 @@ export default (() => {
             <Column gap="xxxl">
                 <Row>
                     <Button onClick={theme.cycle}>
-                        Cycle theme (currently <code>{theme.theme()}</code>)
+                        Cycle theme (currently <code>{theme.theme}</code>)
                     </Button>
                     <Button
                         onClick={() => {

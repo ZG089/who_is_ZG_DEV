@@ -1,69 +1,67 @@
 import { type Accessor, type Component, type JSX, createContext, createEffect, createSignal, onCleanup } from 'solid-js'
 import { ThemeCycleMap } from './constants/theme'
+import { createStore } from 'solid-js/store'
 
 export const ThemeContext = createContext<ThemeStruct>({
-    theme: () => 'auto' as const,
-    colorScheme: () => 'light' as const,
+    theme: 'auto',
+    colorScheme: 'light',
     set: () => {},
     cycle: () => {},
-    initialized: () => false,
+    initialized: false,
 })
 
 export const ThemeProvider: Component<{ children: JSX.Element | JSX.Element[] }> = props => {
-    const [colorScheme, setColorScheme] = createSignal<ThemeColorScheme>('dark')
-    const [theme, setTheme] = createSignal<ThemeTheme>('auto')
-    const [initialized, setInitialized] = createSignal(false)
-
-    const themeSetHandler = ((value, mq?: Pick<MediaQueryList, 'matches'>) => {
-        switch (value) {
-            case 'auto':
+    const [theme, setTheme] = createStore<ThemeStruct>({
+        theme: 'auto',
+        colorScheme: 'dark',
+        initialized: false,
+        set: value => {
+            if (value === 'auto') {
                 localStorage.removeItem('theme_override')
-                setColorScheme((mq ?? matchMedia('(prefers-color-scheme:light)')).matches ? 'light' : 'dark')
-                break
-            default:
+                setTheme({
+                    colorScheme: matchMedia('(prefers-color-scheme:light)').matches ? 'light' : 'dark',
+                })
+            } else {
                 localStorage.setItem('theme_override', value)
-                setColorScheme(value)
-        }
+                setTheme({
+                    colorScheme: value as ThemeColorScheme,
+                })
+            }
 
-        setTheme(value)
-        document.documentElement.dataset.theme = colorScheme()
-    }) satisfies ThemeStruct['set']
+            setTheme({
+                theme: value,
+            })
+
+            document.documentElement.dataset.theme = theme.colorScheme
+        },
+        cycle: () => {
+            theme.set(ThemeCycleMap[theme.theme])
+        },
+    })
 
     createEffect(() => {
         const mq = matchMedia('(prefers-color-scheme:light)')
         const override = localStorage.getItem('theme_override') as ThemeColorScheme
 
-        setTheme(override ?? 'auto')
-        setInitialized(true)
+        setTheme({
+            theme: override ?? 'auto',
+            initialized: true,
+        })
 
-        const listener = (e: MediaQueryListEvent) =>
-            !localStorage.getItem('theme_override') && themeSetHandler('auto', e)
-
+        const listener = () => !localStorage.getItem('theme_override') && theme.set('auto')
         mq.addEventListener('change', listener)
         onCleanup(() => mq.removeEventListener('change', listener))
     })
 
-    return (
-        <ThemeContext.Provider
-            value={{
-                colorScheme: colorScheme,
-                theme: theme,
-                set: themeSetHandler,
-                cycle: () => themeSetHandler(ThemeCycleMap[theme()]),
-                initialized: initialized,
-            }}
-        >
-            {props.children}
-        </ThemeContext.Provider>
-    )
+    return <ThemeContext.Provider value={theme}>{props.children}</ThemeContext.Provider>
 }
 
 export interface ThemeStruct {
-    theme: Accessor<ThemeTheme>
-    colorScheme: Accessor<ThemeColorScheme>
+    theme: ThemeTheme
+    colorScheme: ThemeColorScheme
     set: (theme: ThemeTheme) => void
     cycle: () => void
-    initialized: Accessor<boolean>
+    initialized: boolean
 }
 
 export type ThemeColorScheme = 'light' | 'dark'

@@ -121,9 +121,8 @@ const NavDock: Component<NavDockProps> = props => {
 }
 
 const ThemeSwitchNavButton: Component = () => {
-    const themeContext = useContext(ThemeContext)
-    const theme = createMemo(() => themeContext.theme())
-    const label = createMemo(() => ThemeSwitchHintMap[ThemeCycleMap[theme()]])
+    const theme = useContext(ThemeContext)
+    const label = createMemo(() => ThemeSwitchHintMap[ThemeCycleMap[theme.theme]])
 
     return (
         <Touchable
@@ -132,7 +131,7 @@ const ThemeSwitchNavButton: Component = () => {
             asProps={
                 {
                     as: 'button',
-                    onClick: themeContext.cycle,
+                    onClick: theme.cycle,
                     title: label(),
                     'aria-label': label(),
                 } as FlexHelperProps<'button'>
@@ -141,7 +140,7 @@ const ThemeSwitchNavButton: Component = () => {
             centerVertical
         >
             <Dynamic
-                component={themeContext.initialized() ? ThemeIconMap[theme()] : ThemeSyncing}
+                component={theme.initialized ? ThemeIconMap[theme.theme] : ThemeSyncing}
                 aria-hidden="true"
                 class={styles.Icon}
             />
