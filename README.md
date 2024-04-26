@@ -21,7 +21,7 @@ It's my website! I think having a website is cool, so I'm trying to make it real
    bun dev
    ```
 
-3. Make some changes *(optional)*
+3. Make some changes _(optional)_
 
 4. Build the site
 
@@ -29,14 +29,30 @@ It's my website! I think having a website is cool, so I'm trying to make it real
    bun run build
    ```
 
-5. Preview the built site *(optional)*
+5. Preview the built site _(optional)_
 
    ```sh
    bun start
    ```
 
-### 📃 Common issues
+### 📃 Common questions & issues
 
 #### Server starts, but loads infinitely
 
 You may be doing cyclic imports. To check if this is actually the issue, try **building the site**. If everything works correctly when building, it is a guaranteed cyclic import issue.
+
+#### Hydration mismatch when renaming routes
+
+Sometimes build caches don't get invalidated. You'll need to remove the following directories and restart the development server:
+
+- `dist`
+- `.output`
+- `.vinxi`
+- `node_modules/.vinxi`
+
+#### What is app integrity?
+
+[At build time, app integrity is computed](./app.config.ts). It can be `clean`, `dirty`, and `unknown`. This status is to check whether files have been modified or not after the current commit.
+This **will not** check for post-processing done by your host, **nor does this guarantee safety** for visitors of the site. It is merely there to **prevent developers forgetting to add files to commits**.
+
+You can access the [`/dev` route](https://palmdevs.me/dev) to view integrity and other information in console.
