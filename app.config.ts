@@ -9,7 +9,7 @@ const integrityCheck = spawnSync('git', ['diff', '--name-only', 'HEAD', ...integ
     timeout: 5000,
 })
 
-const integrityDirtyItems = integrityCheck.stdout.toString().trim().split('\n')
+const integrityDirtyItems = integrityCheck.stdout.toString().trim().split('\n').filter(Boolean)
 const integrityResult = integrityDirtyItems.length ? 'dirty' : integrityCheck.status !== null ? 'clean' : 'unknown'
 
 export default defineConfig({
