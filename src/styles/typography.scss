@@ -51,7 +51,6 @@ h2,
 h3 {
   color: var(--neutral-high);
   text-wrap: balance;
-  // margin-block-end: var(--gap-relative-smaller);
 }
 
 h1 {
@@ -65,6 +64,7 @@ h2 {
 
 h3 {
   font-size: var(--text-heading);
+  margin-block-end: var(--gap-relative-smaller);
 }
 
 // Small headings have bigger relative bottom margin
