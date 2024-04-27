@@ -52,7 +52,8 @@ Sometimes build caches don't get invalidated. You'll need to remove the followin
 
 #### What is app integrity?
 
-[At build time, app integrity is computed](./app.config.ts). It can be `clean`, `dirty`, and `unknown`. This status is to check whether files have been modified or not after the current commit.
-This **will not** check for post-processing done by your host, **nor does this guarantee safety** for visitors of the site. It is merely there to **prevent developers forgetting to add files to commits**.
+[At build time, app integrity is computed](./app.config.ts). It can be `clean`, `dirty`, and `unknown`.
 
-You can access the [`/dev` route](https://palmdevs.me/dev) to view integrity and other information in console.
+This status is to check whether files have been modified or not after the current commit. This exists to **prevent developers forgetting to add files to commits**, or if the source code before building and deploying has been touched by a host (for debugging purposes).
+
+You can view integrity and other information in the console.
