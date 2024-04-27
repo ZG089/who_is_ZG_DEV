@@ -29,7 +29,7 @@ const NavDock: Component<NavDockProps> = props => {
 
         const rehighlight = () => {
             const highlight = ref.querySelector('#nav-highlight') as HTMLElement
-            const active = ref.querySelector(`.${styles.ActiveLink}`) as HTMLAnchorElement
+            const active = ref.querySelector(`.${styles.ActiveItem}`) as HTMLAnchorElement
 
             if (active) {
                 const parentRect = ref.getBoundingClientRect()
@@ -51,7 +51,7 @@ const NavDock: Component<NavDockProps> = props => {
     }
 
     return (
-        <div class={styles.DockContainer}>
+        <Column centerVertical centerHorizontal class={styles.DockContainer}>
             <Row ref={handleRef} as="div" class={styles.Dock}>
                 <div id="nav-highlight" class={styles.Highlight} aria-hidden="true" />
                 <nav>
@@ -61,18 +61,18 @@ const NavDock: Component<NavDockProps> = props => {
                                 <li>
                                     <Touchable
                                         as={Row}
-                                        class={styles.Link}
+                                        class={styles.Item}
                                         asProps={
                                             {
                                                 gap: 'xs',
                                                 as: A,
                                                 href: page.href,
                                                 inactiveClass: '',
-                                                activeClass: styles.ActiveLink,
+                                                activeClass: styles.ActiveItem,
                                                 end: true,
                                                 onClick: e =>
                                                     (e.currentTarget as HTMLAnchorElement).classList.contains(
-                                                        styles.ActiveLink,
+                                                        styles.ActiveItem,
                                                     ) && window.scrollTo({ top: 0 }),
                                             } as FlexHelperProps<typeof A>
                                         }
@@ -108,7 +108,7 @@ const NavDock: Component<NavDockProps> = props => {
                                                 rel: 'noreferrer',
                                                 title: link.name,
                                             }}
-                                            class={`${styles.Link} ${styles.IconLink}`}
+                                            class={`${styles.Item} ${styles.IconItem}`}
                                             centerVertical
                                             aria-label={link.name}
                                         >
@@ -121,7 +121,7 @@ const NavDock: Component<NavDockProps> = props => {
                     </Row>
                 </div>
             </Row>
-        </div>
+        </Column>
     )
 }
 
@@ -132,7 +132,7 @@ const ThemeSwitchNavButton: Component = () => {
     return (
         <Touchable
             as={Column}
-            class={`${styles.Link} ${styles.IconLink}`}
+            class={`${styles.Item} ${styles.IconItem}`}
             asProps={
                 {
                     as: 'button',
