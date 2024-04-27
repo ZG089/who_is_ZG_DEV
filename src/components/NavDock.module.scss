@@ -25,19 +25,25 @@
 
   &[data-scrolled="true"] {
     background-color: var(--surface-low);
-    background-color: color-mix(in srgb, var(--surface-low), transparent 10%);
-    backdrop-filter: blur(var(--gap-small));
-
     outline-color: var(--surface-medium);
 
     & .Highlight {
       background-color: var(--surface-high);
-      background-color: color-mix(
-        in srgb,
-        var(--surface-high),
-        transparent 20%
-      );
     }
+
+    @media not print and (prefers-contrast: more) and (prefers-reduced-transparency: reduce) and (prefers-reduced-motion: reduce) {
+      backdrop-filter: blur(var(--gap-small));
+      background-color: color-mix(in srgb, var(--surface-low), transparent 10%);
+
+      & .Highlight {
+        background-color: color-mix(
+          in srgb,
+          var(--surface-high),
+          transparent 20%
+        );
+      }
+    }
+    
   }
 }
 

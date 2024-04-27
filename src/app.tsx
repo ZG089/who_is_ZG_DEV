@@ -25,9 +25,11 @@ const App: Component = () => {
         console.table({
             Version: `${__APP_BRANCH}.${__APP_COMMIT}-${__APP_DEPLOY_CONTEXT}`,
             Integrity: `${IntegrityEmojiMap[__APP_INTEGRITY]}`,
-            'Dirty files': `${__APP_INTEGRITY_DIRTY_FILES.length} files are dirty (modified):\n${__APP_INTEGRITY_DIRTY_FILES
-                .map(f => `- ${f}`)
-                .join('\n')}`,
+            'Dirty files': !__APP_INTEGRITY_DIRTY_FILES.length
+                ? 'All important files are clean'
+                : `${__APP_INTEGRITY_DIRTY_FILES.length} files are dirty:\n${__APP_INTEGRITY_DIRTY_FILES
+                      .map(f => `- ${f}`)
+                      .join('\n')}`,
         })
     })
 
