@@ -1,7 +1,7 @@
 import { MetaProvider } from '@solidjs/meta'
 import { Router } from '@solidjs/router'
 import { FileRoutes } from '@solidjs/start/router'
-import { type Component, Suspense, ErrorBoundary } from 'solid-js'
+import { type Component, ErrorBoundary, Suspense } from 'solid-js'
 
 import { ThemeProvider } from './contexts'
 import ErrorPage from './error-page'

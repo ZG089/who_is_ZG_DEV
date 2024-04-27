@@ -86,7 +86,13 @@ export default (() => {
                                 <Touchable
                                     as={Row}
                                     class={styles.SkillContainer}
-                                    asProps={{ gap: 'sm', as: 'a', href: skill.link, target: '_blank', rel: 'noreferrer' }}
+                                    asProps={{
+                                        gap: 'sm',
+                                        as: 'a',
+                                        href: skill.link,
+                                        target: '_blank',
+                                        rel: 'noreferrer',
+                                    }}
                                     withInteractionGlow
                                     centerVertical
                                 >

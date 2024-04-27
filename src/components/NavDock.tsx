@@ -102,7 +102,13 @@ const NavDock: Component<NavDockProps> = props => {
                                         <Touchable
                                             as={Row}
                                             class={`${styles.Link} ${styles.IconLink}`}
-                                            asProps={{ as: 'a', href: link.href, target: '_blank', rel: 'noreferrer', title: link.name }}
+                                            asProps={{
+                                                as: 'a',
+                                                href: link.href,
+                                                target: '_blank',
+                                                rel: 'noreferrer',
+                                                title: link.name,
+                                            }}
                                             centerVertical
                                             aria-label={link.name}
                                             withoutHoverInteractionEffect

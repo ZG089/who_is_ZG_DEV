@@ -1,6 +1,6 @@
 import { type Accessor, type Component, type JSX, createContext, createEffect, createSignal, onCleanup } from 'solid-js'
-import { ThemeCycleMap } from './constants/theme'
 import { createStore } from 'solid-js/store'
+import { ThemeCycleMap } from './constants/theme'
 
 export const ThemeContext = createContext<ThemeStruct>({
     theme: 'auto',
