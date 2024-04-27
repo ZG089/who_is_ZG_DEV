@@ -15,6 +15,7 @@ const integrityResult = integrityDirtyItems.length ? 'dirty' : integrityCheck.st
 export default defineConfig({
     ssr: true,
     server: {
+        preset: process.env.NITRO_PRESET ?? 'bun',
         prerender: {
             crawlLinks: true,
             failOnError: true,
