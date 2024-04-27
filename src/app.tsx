@@ -6,8 +6,7 @@ import { type Component, Suspense, ErrorBoundary } from 'solid-js'
 import { ThemeProvider } from './contexts'
 import ErrorPage from './error-page'
 
-// Non-critical stylesheets
-import './styles/layers.scss'
+import './app.scss'
 
 const App: Component = () => {
     return (

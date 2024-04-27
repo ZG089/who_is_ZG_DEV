@@ -1,6 +1,7 @@
-@import url("./styles/typography.scss");
 @import url("./styles/themes.scss");
+@import url("./styles/typography.scss");
 @import url("./styles/constants.scss");
+@import url("./styles/layers.scss");
 
 :root {
   --themeable-prop-content: color, fill, stroke-color;
