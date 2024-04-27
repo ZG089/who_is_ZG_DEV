@@ -24,7 +24,7 @@ export default (() => {
 
     onMount(() => {
         console.debug(
-            "%cHello there!\n%cAre you a developer looking to contribute to this website? Check out the source code!\nIf you're just exploring then that's fine. Have fun!",
+            "%cHey there!\n%cAre you a developer looking to contribute to this website? Check out the source code!\nIf you're just exploring then that's fine. Have fun!",
             'font-size: 3rem',
             'font-size: 1rem',
         )

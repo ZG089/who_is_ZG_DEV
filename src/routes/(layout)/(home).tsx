@@ -14,8 +14,8 @@ import styles from './(home).module.scss'
 export default (() => {
     return (
         <Page>
-            <Section constrainSize id="hero" class={styles.DirectTextChildrenCenter}>
-                <Column gap="none">
+            <Section constrainSize>
+                <Column gap="none" class={sharedStyles.DirectTextChildrenAlignCenter}>
                     {/* biome-ignore lint/a11y/useHeadingContent: Screen readers kinda suck, so here's a workaround */}
                     <h1 aria-label="Hey there, I'm Palm">
                         <span aria-hidden="true">Hey there, I'm </span>
@@ -34,11 +34,11 @@ export default (() => {
                     </p>
                 </Column>
                 <Row
-                    wrap
-                    centerHorizontal
-                    gap="md"
-                    style="padding-block-start: var(--gap-small)"
                     as="ul"
+                    gap="md"
+                    centerHorizontal
+                    wrap
+                    style="padding-block-start: var(--gap-small)"
                     aria-label="My socials"
                 >
                     <For each={Object.values(Socials)}>
@@ -55,7 +55,7 @@ export default (() => {
                     </For>
                 </Row>
             </Section>
-            <Section centerHorizontal constrainSize id="projects">
+            <Section centerHorizontal constrainSize>
                 <h2 class={styles.JSXHeadingStart} aria-label="Projects">
                     <span aria-hidden="true">&lt;</span>
                     <span>Projects</span>
@@ -64,7 +64,7 @@ export default (() => {
                 <ul class={styles.ProjectsGrid}>
                     <For each={Projects}>
                         {project => (
-                            <li style="flex: 1">
+                            <li>
                                 <ProjectCard {...project} />
                             </li>
                         )}
@@ -74,18 +74,18 @@ export default (() => {
                     &lt;/Projects&gt;
                 </p>
             </Section>
-            <Section id="skills">
+            <Section>
                 <Column gap="none">
                     <h2>Skills</h2>
                     <p>These are the technologies I know and use regularly.</p>
                 </Column>
-                <Row gap="sm" wrap style="max-width: 48rem" as="ul">
+                <Row as="ul" wrap gap="xs">
                     <For each={Skills}>
                         {skill => (
                             <li>
                                 <Touchable
+                                    withInteractionGlow
                                     as={Row}
-                                    class={styles.SkillContainer}
                                     asProps={{
                                         gap: 'sm',
                                         as: 'a',
@@ -93,24 +93,21 @@ export default (() => {
                                         target: '_blank',
                                         rel: 'noreferrer',
                                     }}
-                                    withInteractionGlow
+                                    class={styles.SkillContainer}
                                     centerVertical
                                 >
-                                    <Show when={typeof skill.icon === 'string' && skill.icon}>
-                                        {url => (
-                                            <img
-                                                aria-hidden="true"
-                                                class={styles.SkillIcon}
-                                                draggable="false"
-                                                src={url()}
-                                                loading="lazy"
-                                                alt={`${skill.name} logo`}
-                                            />
-                                        )}
-                                    </Show>
-                                    <Show when={typeof skill.icon === 'function' && skill.icon}>
-                                        {icon => icon()({ class: styles.SkillIcon })}
-                                    </Show>
+                                    {typeof skill.icon === 'function' ? (
+                                        <skill.icon class={styles.SkillIcon} />
+                                    ) : (
+                                        <img
+                                            aria-hidden="true"
+                                            class={styles.SkillIcon}
+                                            draggable="false"
+                                            src={skill.icon}
+                                            loading="lazy"
+                                            alt={`${skill.name} logo`}
+                                        />
+                                    )}
                                     <span>{skill.name}</span>
                                 </Touchable>
                             </li>
@@ -118,7 +115,7 @@ export default (() => {
                     </For>
                 </Row>
             </Section>
-            <Section id="contact">
+            <Section>
                 <Column gap="none">
                     <h2>Let's chat</h2>
                     <p style="text-wrap: balance">

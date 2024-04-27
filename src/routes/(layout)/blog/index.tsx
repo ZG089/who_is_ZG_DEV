@@ -4,13 +4,12 @@ import { Column, LinkButton, Page, Section } from '~/components'
 import IconHome from '~/assets/icons/nav/home.svg'
 
 import sharedStyles from '~/styles/shared.module.scss'
-import styles from '../(home).module.scss'
 
 export default (() => {
     return (
         <Page>
-            <Section constrainSize id="hero" class={styles.DirectTextChildrenCenter}>
-                <Column gap="none">
+            <Section constrainSize>
+                <Column gap="none" class={sharedStyles.DirectTextChildrenAlignCenter}>
                     {/* biome-ignore lint/a11y/useHeadingContent: Screen readers kinda suck, so here's a workaround */}
                     <h1 aria-label="Coming soon">
                         <span aria-hidden="true">Coming </span>

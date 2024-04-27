@@ -1,8 +1,8 @@
+import NavDock from '~/components/NavDock'
+
 import IconBlog from '~/assets/icons/nav/blog.svg'
 import IconHome from '~/assets/icons/nav/home.svg'
 import IconSource from '~/assets/icons/source.svg'
-
-import NavDock from '~/components/NavDock'
 
 import type { RouteSectionProps } from '@solidjs/router'
 import type { Component } from 'solid-js'

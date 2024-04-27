@@ -1,9 +1,9 @@
-import type { IconType } from '~/components'
-import type { ThemeTheme } from '~/contexts'
-
 import IconThemeAuto from '~/assets/icons/nav/theme_auto.svg'
 import IconThemeDark from '~/assets/icons/nav/theme_dark.svg'
 import IconThemeLight from '~/assets/icons/nav/theme_light.svg'
+
+import type { IconType } from '~/components'
+import type { ThemeTheme } from '~/contexts'
 
 export const ThemeIconMap: Record<ThemeTheme, IconType> = {
     auto: IconThemeAuto,

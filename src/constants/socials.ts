@@ -1,6 +1,6 @@
-import IconDiscord from '../assets/icons/discord.svg'
-import IconGitHub from '../assets/icons/github.svg'
-import IconEmail from '../assets/icons/mail.svg'
+import IconDiscord from '~/assets/icons/discord.svg'
+import IconGitHub from '~/assets/icons/github.svg'
+import IconEmail from '~/assets/icons/mail.svg'
 
 import type { IconType } from '~/components'
 
