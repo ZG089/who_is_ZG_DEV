@@ -1,11 +1,5 @@
 @use "../../styles/queries";
 
-.DirectTextChildrenCenter {
-  & > * {
-    text-align: center;
-  }
-}
-
 .ProjectsGrid {
   display: grid;
   grid-template-columns: 1.5fr 0.75fr 0.25fr 1.5fr;
@@ -17,6 +11,10 @@
     "c c d d"
     "e e e f"
     "g g h h";
+
+  & > * {
+    flex: 1;
+  }
 
   & > :nth-child(8n + 1) {
     grid-area: a;

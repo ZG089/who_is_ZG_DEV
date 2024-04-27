@@ -1,3 +1,10 @@
+.DockContainer {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: var(--layer-nav);
+}
+
 .Dock {
   position: sticky;
   top: var(--gap-medium);
@@ -12,39 +19,31 @@
   transition: var(---duration-short);
   transition-property: background-color, outline-color;
 
-  &:has(.ActiveLink) .Highlight {
+  &:has(.ActiveItem) .Highlight {
     opacity: 1;
   }
 
   &[data-scrolled="true"] {
     background-color: var(--surface-low);
-    outline-color: var(--surface-medium);
+    background-color: color-mix(in srgb, var(--surface-low), transparent 10%);
+    backdrop-filter: blur(var(--gap-small));
 
-    // Faking a blur effect
-    opacity: 98%;
-    [data-theme="dark"] & {
-      opacity: 99%;
-    }
+    outline-color: var(--surface-medium);
 
     & .Highlight {
       background-color: var(--surface-high);
+      background-color: color-mix(
+        in srgb,
+        var(--surface-high),
+        transparent 20%
+      );
     }
   }
 }
 
-.DockContainer {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: var(--layer-nav);
-}
-
 .Highlight {
   position: absolute;
-  // Linked to padding of .Dock
+  // Linked to padding-block of .Dock
   left: var(--gap-small);
 
   z-index: var(--layer-bg);
@@ -58,7 +57,7 @@
   transition-delay: var(---duration-shorter);
 }
 
-.Link {
+.Item {
   padding: var(--gap-smaller) var(--gap-small);
   border-radius: var(--radius-full);
   background-color: transparent;
@@ -70,7 +69,7 @@
 
   transition: all var(---duration-short) var(--easing-quick);
 
-  &:not(.ActiveLink):is(:hover, :active) {
+  &:not(.ActiveItem):is(:hover, :active) {
     background-color: var(--surface-low);
     [data-scrolled="true"] & {
       background-color: var(--surface-medium);
@@ -86,12 +85,12 @@
   }
 }
 
-.IconLink {
+.IconItem {
   padding: var(--gap-smaller);
 }
 
-.Link:hover,
-.Link:active,
-.ActiveLink {
+.Item:hover,
+.Item:active,
+.ActiveItem {
   color: var(--neutral-highest);
 }

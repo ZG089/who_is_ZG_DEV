@@ -1,8 +1,9 @@
 import { onMount, splitProps } from 'solid-js'
-import type { Component, ComponentProps, JSX } from 'solid-js'
 import { Dynamic } from 'solid-js/web'
 
 import { combineClassNames, undefinedIf } from '~/utils'
+
+import type { Component, ComponentProps, JSX } from 'solid-js'
 
 import styles from './Touchable.module.scss'
 

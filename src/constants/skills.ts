@@ -1,4 +1,5 @@
 import IconFastify from '~/assets/icons/fastify.svg'
+
 import type { IconType } from '~/components'
 
 const Skills = [
