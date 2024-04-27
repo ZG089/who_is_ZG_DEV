@@ -1,4 +1,4 @@
-import { type Component, For, onMount, useContext } from 'solid-js'
+import { type Component, For, useContext } from 'solid-js'
 import { createStore } from 'solid-js/store'
 
 import { Button, Column, IconButton, type IconType, LinkButton, NavDock, Page, Row, Section } from '~/components'
@@ -20,17 +20,6 @@ export default (() => {
         disabled: false,
         trailingIcon: undefined,
         leadingIcon: undefined,
-    })
-
-    onMount(() => {
-        console.debug(
-            "%cHey there!\n%cAre you a developer looking to contribute to this website? Check out the source code!\nIf you're just exploring then that's fine. Have fun!",
-            'font-size: 3rem',
-            'font-size: 1rem',
-        )
-        console.debug('Version:', `${__APP_BRANCH}.${__APP_COMMIT}-${__APP_DEPLOY_CONTEXT}`)
-        console.debug(`Integrity: %c${__APP_INTEGRITY}`, `color: ${__APP_INTEGRITY === 'clean' ? 'green' : 'red'}`)
-        if (__APP_INTEGRITY !== 'clean') console.debug('Dirty files:', __APP_INTEGRITY_DIRTY_FILES)
     })
 
     return (
