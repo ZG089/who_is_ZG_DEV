@@ -55,7 +55,6 @@ const NavDock: Component<NavDockProps> = props => {
             <Row ref={handleRef} as="div" class={styles.Dock}>
                 <div id="nav-highlight" class={styles.Highlight} aria-hidden="true" />
                 <nav>
-                    <div id="nav-highlight" class={styles.Highlight} aria-hidden="true" />
                     <Row as="ul" gap="xs" aria-label="Navigation links">
                         <For each={props.pages}>
                             {page => (
@@ -90,18 +89,18 @@ const NavDock: Component<NavDockProps> = props => {
                         </For>
                     </Row>
                 </nav>
-                <Show when={props.links?.length}>
-                    <div>
-                        <Row as="ul" gap="xs" aria-label="Other links and site settings">
-                            <li>
-                                <ThemeSwitchNavButton />
-                            </li>
+                <div>
+                    <Row as="ul" gap="xs" aria-label="Other links and site settings">
+                        <li>
+                            <ThemeSwitchNavButton />
+                        </li>
+                        <Show when={props.links?.length}>
                             <For each={props.links}>
                                 {link => (
                                     <li>
                                         <Touchable
+                                            withoutHoverInteractionEffect
                                             as={Row}
-                                            class={`${styles.Link} ${styles.IconLink}`}
                                             asProps={{
                                                 as: 'a',
                                                 href: link.href,
@@ -109,18 +108,18 @@ const NavDock: Component<NavDockProps> = props => {
                                                 rel: 'noreferrer',
                                                 title: link.name,
                                             }}
+                                            class={`${styles.Link} ${styles.IconLink}`}
                                             centerVertical
                                             aria-label={link.name}
-                                            withoutHoverInteractionEffect
                                         >
                                             <link.icon aria-hidden="true" class={styles.Icon} />
                                         </Touchable>
                                     </li>
                                 )}
                             </For>
-                        </Row>
-                    </div>
-                </Show>
+                        </Show>
+                    </Row>
+                </div>
             </Row>
         </div>
     )
