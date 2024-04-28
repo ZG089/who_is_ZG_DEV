@@ -16,7 +16,7 @@ export default (() => {
     return (
         <GlowingBackground>
             <Page>
-                <Section constrainSize>
+                <Section constrainSize style="padding-block: min(8vh, var(--gap-insanely-large));">
                     <Column gap="none" class={sharedStyles.DirectTextChildrenAlignCenter}>
                         {/* biome-ignore lint/a11y/useHeadingContent: Screen readers kinda suck, so here's a workaround */}
                         <h1 aria-label="Hey there, I'm Palm">
@@ -40,7 +40,6 @@ export default (() => {
                         gap="md"
                         centerHorizontal
                         wrap
-                        style="padding-block-start: var(--gap-small)"
                         aria-label="My socials"
                     >
                         <For each={Object.values(Socials)}>

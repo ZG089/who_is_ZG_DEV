@@ -20,7 +20,7 @@
 // TODO: Put these as a constant?
 .Section {
   max-width: 48rem;
-  padding-block: min(6vh, var(--gap-very-large))
+  padding-block: min(4vh, var(--gap-larger));
 }
 
 .FH-Row, .FH-Col {
