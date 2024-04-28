@@ -16,10 +16,7 @@ const ErrorPage: Component<{ error: unknown; reset: () => void }> = props => {
                 <button class={styles.Button} type="button" onClick={() => location.reload()}>
                     Reload
                 </button>
-                <a
-                    class={styles.Button}
-                    href={RepositoryLinks.issues}
-                >
+                <a class={styles.Button} href={RepositoryLinks.issues}>
                     Report an issue
                 </a>
                 <button
