@@ -86,7 +86,6 @@ export default (() => {
                             {skill => (
                                 <li>
                                     <Touchable
-                                        withInteractionGlow
                                         as={Row}
                                         asProps={{
                                             gap: 'sm',

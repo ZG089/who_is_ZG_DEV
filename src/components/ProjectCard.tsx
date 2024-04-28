@@ -10,7 +10,6 @@ import styles from './ProjectCard.module.scss'
 const ProjectCard: Component<ProjectCardProps> = props => {
     return (
         <Touchable
-            withInteractionGlow
             class={styles.Card}
             aria-label={`${props.name}. ${props.description} Tap to ${props.hint}.`}
             flex
@@ -19,6 +18,7 @@ const ProjectCard: Component<ProjectCardProps> = props => {
                 as: 'a',
                 target: '_blank',
                 rel: 'noreferrer',
+                href: props.href,
             }}
         >
             <Column aria-hidden="true" centerHorizontal centerVertical class={styles.ImageContainer}>
