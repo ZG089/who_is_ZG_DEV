@@ -1,4 +1,4 @@
-import { type Component, For, type JSX, onCleanup, onMount } from 'solid-js'
+import { type Component, For, type JSX, onCleanup, onMount, createEffect } from 'solid-js'
 import { Portal } from 'solid-js/web'
 
 import styles from './GlowingBackground.module.scss'
@@ -11,18 +11,20 @@ const GlowingBackground: Component<{
     scrollStiffness?: number
 }> = props => {
     const handleRef = (ref: HTMLDivElement) => {
+        // Firefox with low opacity gradient sucks
         if ('mozInnerScreenX' in window && typeof window.mozInnerScreenX !== 'undefined') {
             logger.log('GlowingBackground', 'User is on Firefox (which has terrible rendering), disabling')
             return ref.remove()
         }
 
-        onMount(() => {
+        // Handle scrolling parallax effect
+        createEffect(() => {
             const parentHeight = ref.clientHeight
             const handleScroll = () =>
                 requestAnimationFrame(() => {
                     logger.debug('GlowingBackground', 'Scroll position updated')
                     ref.style.top = `-${
-                        Math.floor(parentHeight / (props.scrollStiffness ?? 5)) *
+                        (parentHeight / (props.scrollStiffness ?? 8.5)) *
                         (window.scrollY / (document.body.clientHeight - window.innerHeight))
                     }px`
                 })
@@ -31,14 +33,15 @@ const GlowingBackground: Component<{
             onCleanup(() => window.removeEventListener('scroll', handleScroll))
         })
 
-        onMount(() => {
+        // Handle initial animation
+        createEffect(() => {
             const elements = [...ref.children] as [HTMLElement, ...HTMLElement[]]
 
             // Randomize initial positions
             animateGlow(elements)
-            // Randomize them again so it animates while it's still invisible
             requestAnimationFrame(() => {
-                animateGlow(elements)
+                // Randomize them again so it animates while it's still invisible
+                requestAnimationFrame(() => animateGlow(elements))
                 // Finally make it visible
                 requestAnimationFrame(() => {
                     ref.style.removeProperty('opacity')
@@ -55,7 +58,7 @@ const GlowingBackground: Component<{
         <>
             <Portal mount={document.querySelector('main') ?? document.body}>
                 <div style="opacity: 0" aria-hidden="true" ref={handleRef} class={styles.Container}>
-                    <For each={[...Array(props.orbs ?? 7).keys()]}>{() => <div class={styles.Orb} />}</For>
+                    <For each={[...Array(props.orbs ?? 20).keys()]}>{() => <div class={styles.Orb} />}</For>
                 </div>
             </Portal>
             {props.children}
