@@ -22,10 +22,16 @@ const NavDock: Component<NavDockProps> = props => {
     const handleRef = (ref: HTMLElement) => {
         // Scroll transition
         onMount(() => {
-            const listener = () => ref.setAttribute('data-scrolled', String(window.scrollY > 0))
+            const listener = () => {
+                ref.setAttribute('data-scrolled', String(window.scrollY > 0))
+                logger.debug('NavDock', 'Scrolled state updated')
+            }
+
             listener()
             document.addEventListener('scroll', listener)
             onCleanup(() => document.removeEventListener('scroll', listener))
+
+            logger.log('NavDock', 'Component initialized')
         })
 
         const rehighlight = () => {
@@ -33,6 +39,8 @@ const NavDock: Component<NavDockProps> = props => {
             const active = ref.querySelector(`.${styles.ActiveItem}`) as HTMLAnchorElement
 
             if (active) {
+                logger.log('NavDock', 'New active page:', active.href)
+
                 const parentRect = ref.getBoundingClientRect()
                 const rect = active.getBoundingClientRect()
 
@@ -71,10 +79,17 @@ const NavDock: Component<NavDockProps> = props => {
                                                 inactiveClass: '',
                                                 activeClass: styles.ActiveItem,
                                                 end: true,
-                                                onClick: e =>
-                                                    (e.currentTarget as HTMLAnchorElement).classList.contains(
-                                                        styles.ActiveItem,
-                                                    ) && window.scrollTo({ top: 0 }),
+                                                onClick: e => {
+                                                    if (
+                                                        !(e.currentTarget as HTMLAnchorElement).classList.contains(
+                                                            styles.ActiveItem,
+                                                        )
+                                                    )
+                                                        return
+
+                                                    window.scrollTo({ top: 0 })
+                                                    logger.log('NavDock', 'Scrolled to top')
+                                                },
                                             } as FlexHelperProps<typeof A>
                                         }
                                         withoutHoverInteractionEffect
