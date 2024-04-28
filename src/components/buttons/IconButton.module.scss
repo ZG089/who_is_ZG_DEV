@@ -23,12 +23,14 @@
     height: var(--comp-el-size);
   }
 
-  &:hover {
-    opacity: 0.85;
-  }
+  &:not([aria-disabled="true"], :disabled) {
+    &:hover {
+      opacity: 0.85;
+    }
 
-  &:focus-visible {
-    transform: translateY(-0.3rem);
+    &:focus-visible {
+      transform: translateY(-0.3rem);
+    }
   }
 }
 
@@ -61,7 +63,7 @@
   --comp-bg: var(--surface-medium);
   --comp-color: var(--neutral-high);
 
-  &:is(:hover, :focus-visible) {
+  &:not([aria-disabled="true"], :disabled):is(:hover, :focus-visible) {
     opacity: unset;
     --comp-bg: var(--surface-high);
   }
@@ -78,7 +80,7 @@
     outline-color: var(--surface-high);
 
     &:focus-visible {
-        outline-color: unset;
+      outline-color: unset;
     }
   }
 }

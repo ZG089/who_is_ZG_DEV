@@ -10,7 +10,9 @@ import styles from './Button.module.scss'
 
 const Button: Component<ButtonProps> = props => (
     <Touchable
+        withoutHoverInteractionEffect
         asProps={{
+            as: 'button',
             type: 'button',
             onClick: undefinedIf(props.disabled, props.onClick),
         }}
@@ -24,6 +26,7 @@ const Button: Component<ButtonProps> = props => (
 
 const LinkButton: Component<LinkButtonProps> = props => (
     <Touchable
+        withoutHoverInteractionEffect
         asProps={{
             as: 'a',
             target: undefinedIf(props.openInCurrentTab, '_blank'),

@@ -1,68 +1,59 @@
 .Base {
-    text-align: center;
-    padding: var(--gap-small) var(--gap-small);
-    border-radius: var(--radius-medium);
-    user-select: none;
+  text-align: center;
+  padding: var(--gap-small) var(--gap-small);
+  border-radius: var(--radius-medium);
+  user-select: none;
 
-    background-color: var(--comp-bg);
-    color: var(--comp-color);
+  background-color: var(--comp-bg);
+  color: var(--comp-color);
 
-    transition: var(---duration-medium) var(--easing-quick);
-    /* Weird flashing fix for <a> tags, user agent stylesheet issue */
-    transition-property: opacity, transform, filter, text-decoration;
+  transition: var(---duration-medium) var(--easing-quick);
+  /* Weird flashing fix for <a> tags, user agent stylesheet issue */
+  transition-property: opacity, transform, filter, text-decoration;
 
-    font-size: var(--text-label);
-    font-weight: var(--weight-label);
-    text-decoration: none;
+  font-size: var(--text-label);
+  font-weight: var(--weight-label);
+  text-decoration: none;
 
+  &:not([aria-disabled="true"], :disabled) {
     &:hover {
-        opacity: 0.85;
+      opacity: 0.85;
     }
 
     &:focus-visible {
-        transform: translateY(-0.3rem);
+      transform: translateY(-0.3rem);
     }
+  }
 
-    & span {
-        font: inherit;
-    }
-
-    // Disabled
-    &:disabled, &[aria-disabled='true'] {
-        &:hover, &:focus-visible, &:active {
-            transform: unset;
-            filter: unset;
-            & > * {
-                animation: unset !important;
-            }
-        }
-    }
+  & span {
+    font: inherit;
+  }
 }
 
 .Icon {
-    width: var(--size-small);
-    height: var(--size-small);
-    fill: currentColor;
+  width: var(--size-small);
+  height: var(--size-small);
+  fill: currentColor;
 }
 
 .variant-primary {
-    --comp-bg: var(--primary);
-    --comp-color: var(--on-primary);
+  --comp-bg: var(--primary);
+  --comp-color: var(--on-primary);
 }
 
 .variant-secondary {
-    --comp-bg: var(--secondary);
-    --comp-color: var(--on-secondary);
+  --comp-bg: var(--secondary);
+  --comp-color: var(--on-secondary);
 }
 
 .variant-tertiary {
-    --comp-bg: transparent;
-    --comp-color: var(--tertiary);
+  --comp-bg: transparent;
+  --comp-color: var(--tertiary);
 
-    outline: var(--line-style) var(--tertiary);
-    outline-offset: -2px;
+  outline: var(--line-style) var(--tertiary);
+  outline-offset: -2px;
 
-    &:focus-visible {
-        filter: brightness(1.25);
-    }
+  &:focus-visible {
+    filter: brightness(1.25);
+  }
 }

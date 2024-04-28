@@ -7,7 +7,13 @@ import styles from './IconButton.module.scss'
 
 const IconButton: Component<IconButtonProps> = props => {
     return (
-        <Touchable as={Column} asProps={{ as: 'button' }} {...transformProps(props)} type="button">
+        <Touchable
+            withoutHoverInteractionEffect
+            as={Column}
+            asProps={{ as: 'button' }}
+            {...transformProps(props)}
+            type="button"
+        >
             <span>
                 <props.icon aria-hidden="true" class={styles.Icon} />
             </span>
@@ -18,6 +24,7 @@ const IconButton: Component<IconButtonProps> = props => {
 const LinkIconButton: Component<LinkIconButtonProps> = props => {
     return (
         <Touchable
+            withoutHoverInteractionEffect
             as={Column}
             asProps={{ as: 'a' }}
             target={undefinedIf(props.openInCurrentTab, '_blank')}

@@ -38,7 +38,7 @@
     transform: scale(var(--interaction-hover-scale));
   }
 
-  &:hover::before {
+  &:not([aria-disabled="true"], :disabled):hover::before {
     opacity: 1;
   }
 }
