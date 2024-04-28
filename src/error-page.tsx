@@ -1,7 +1,10 @@
 import type { Component } from 'solid-js'
 import { RepositoryLinks } from './constants/links'
+import { logger } from './utils'
 
 const ErrorPage: Component<{ error: unknown; reset: () => void }> = props => {
+    logger.error('ErrorPage', 'Caught an error:', props.error)
+
     return (
         <main id="error-page">
             <h1>Something went very wrong</h1>

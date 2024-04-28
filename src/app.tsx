@@ -5,6 +5,7 @@ import { type Component, ErrorBoundary, Suspense, onMount } from 'solid-js'
 
 import { ThemeProvider } from './contexts'
 import ErrorPage from './error-page'
+import { logger } from './utils'
 
 import './app.scss'
 
@@ -16,10 +17,11 @@ const IntegrityEmojiMap: Record<typeof __APP_INTEGRITY, string> = {
 
 const App: Component = () => {
     onMount(() => {
-        console.debug(
-            "%cHey there!\n%cAre you a developer looking to contribute to this website? Check out the source code!\nIf you're just exploring then that's fine. Have fun!",
-            'font-size: 3rem',
-            'font-size: 1rem',
+        console.log(
+            "%c[App]\n%cHey there!\n%cAre you a developer looking to contribute to this website? Check out the source code!\nIf you're just exploring then that's fine. Have fun!",
+            'color: aquamarine; font-weight: bold;',
+            'font-size: 2rem',
+            'font-size: unset'
         )
 
         console.table({

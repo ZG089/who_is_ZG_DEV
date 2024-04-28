@@ -9,6 +9,7 @@ import ThemeSyncing from '~/assets/icons/nav/theme_syncing.svg'
 
 import { ThemeCycleMap, ThemeIconMap, ThemeSwitchHintMap } from '~/constants/theme'
 import { ThemeContext } from '~/contexts'
+import { logger } from '~/utils'
 
 import type { Component } from 'solid-js'
 import type { FlexHelperProps, IconType } from '.'
@@ -41,7 +42,7 @@ const NavDock: Component<NavDockProps> = props => {
                 highlight.style.height = `${active.clientHeight}px`
                 highlight.style.left = `${rect.x - parentRect.x}px`
                 highlight.style.top = `${rect.y - parentRect.y}px`
-            } else console.warn('No active page')
+            } else logger.warn('NavDock', 'Unknown page, cannot highlight')
         }
 
         document.fonts.ready.then(rehighlight)

@@ -1,6 +1,7 @@
 import { type Accessor, type Component, type JSX, createContext, createEffect, createSignal, onCleanup } from 'solid-js'
 import { createStore } from 'solid-js/store'
 import { ThemeCycleMap } from './constants/theme'
+import { logger } from './utils'
 
 export const ThemeContext = createContext<ThemeStruct>({
     theme: 'auto',
@@ -33,6 +34,7 @@ export const ThemeProvider: Component<{ children: JSX.Element | JSX.Element[] }>
             })
 
             document.documentElement.dataset.theme = theme.colorScheme
+            logger.log('ThemeProvider', `Theme to "${value}" with color scheme "${theme.colorScheme}"`)
         },
         cycle: () => {
             theme.set(ThemeCycleMap[theme.theme])
@@ -47,6 +49,8 @@ export const ThemeProvider: Component<{ children: JSX.Element | JSX.Element[] }>
             theme: override ?? 'auto',
             initialized: true,
         })
+
+        logger.log('ThemeProvider', `Initialized with theme "${theme.theme}" and color scheme "${theme.colorScheme}"`)
 
         const listener = () => !localStorage.getItem('theme_override') && theme.set('auto')
         mq.addEventListener('change', listener)
