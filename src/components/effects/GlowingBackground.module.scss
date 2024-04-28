@@ -29,11 +29,14 @@
     transition-property: top, left, transform;
   }
 
-  @media (prefers-color-scheme: light),
-    (prefers-contrast: more),
+  @media (prefers-contrast: more),
     (prefers-reduced-transparency: reduce),
     (prefers-reduced-motion: reduce),
     print {
+    display: none;
+  }
+
+  [data-theme="light"] & {
     display: none;
   }
 }
