@@ -8,9 +8,9 @@ import Projects from '~/constants/projects'
 import Skills from '~/constants/skills'
 import Socials from '~/constants/socials'
 
+import GlowingBackground from '~/components/effects/GlowingBackground'
 import sharedStyles from '~/styles/shared.module.scss'
 import styles from './(home).module.scss'
-import GlowingBackground from '~/components/effects/GlowingBackground'
 
 export default (() => {
     return (

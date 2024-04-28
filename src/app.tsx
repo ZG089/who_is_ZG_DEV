@@ -21,7 +21,7 @@ const App: Component = () => {
             "%c[App]\n%cHey there!\n%cAre you a developer looking to contribute to this website? Check out the source code!\nIf you're just exploring then that's fine. Have fun!",
             'color: aquamarine; font-weight: bold;',
             'font-size: 2rem',
-            'font-size: unset'
+            'font-size: unset',
         )
 
         console.table({
