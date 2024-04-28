@@ -110,28 +110,3 @@ ul:not([role="list"]) {
 :focus-visible {
   outline: var(--line-style) var(--neutral-highest) !important;
 }
-
-// Error page
-
-main#error-page {
-  display: grid;
-}
-
-#error-page__stack {
-  outline: var(--line-style) red;
-  background-color: var(--surface-medium);
-  white-space: pre-wrap;
-}
-
-#error-page__buttons {
-  margin-top: var(--gap-medium);
-  display: flex;
-  gap: var(--gap-medium);
-}
-
-main#error-page,
-#error-page__stack,
-#error-page__buttons > * {
-  padding: 1rem;
-  border-radius: var(--radius-medium);
-}

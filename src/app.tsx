@@ -5,7 +5,6 @@ import { type Component, ErrorBoundary, Suspense, onMount } from 'solid-js'
 
 import { ThemeProvider } from './contexts'
 import ErrorPage from './error-page'
-import { logger } from './utils'
 
 import './app.scss'
 
@@ -36,19 +35,19 @@ const App: Component = () => {
     })
 
     return (
-        <ErrorBoundary fallback={(err, reset) => <ErrorPage error={err} reset={reset} />}>
-            <Router
-                root={props => (
+        <Router
+            root={props => (
+                <ErrorBoundary fallback={(err, reset) => <ErrorPage error={err} reset={reset} />}>
                     <MetaProvider>
                         <ThemeProvider>
                             <Suspense>{props.children}</Suspense>
                         </ThemeProvider>
                     </MetaProvider>
-                )}
-            >
-                <FileRoutes />
-            </Router>
-        </ErrorBoundary>
+                </ErrorBoundary>
+            )}
+        >
+            <FileRoutes />
+        </Router>
     )
 }
 

@@ -1,30 +1,29 @@
-import type { Component } from 'solid-js'
 import { RepositoryLinks } from './constants/links'
 import { logger } from './utils'
+
+import styles from './error-page.module.scss'
+
+import type { Component } from 'solid-js'
 
 const ErrorPage: Component<{ error: unknown; reset: () => void }> = props => {
     logger.error('ErrorPage', 'Caught an error:', props.error)
 
     return (
-        <main id="error-page">
+        <main class={styles.Page}>
             <h1>Something went very wrong</h1>
             <p>Try refreshing the page. If that still doesn't work, you can report an issue using the button below.</p>
-            <h4>Stack trace (include this in the bug report):</h4>
-            <code id="error-page__stack">
-                {props.error instanceof Error ? props.error.stack : JSON.stringify(props.error)}
-            </code>
-            <div id="error-page__buttons">
-                <button
-                    type="button"
-                    onClick={() => location.reload()}
-                    style="background: var(--primary); color: var(--on-primary)"
-                >
+            <div class={styles.ButtonRow}>
+                <button class={styles.Button} type="button" onClick={() => location.reload()}>
                     Reload
                 </button>
-                <a href={RepositoryLinks.issues} style="background: var(--primary); color: var(--on-primary)">
+                <a
+                    class={styles.Button}
+                    href={RepositoryLinks.issues}
+                >
                     Report an issue
                 </a>
                 <button
+                    class={styles.Button}
                     type="button"
                     onClick={props.reset}
                     style="background: var(--secondary); color: var(--on-secondary)"
@@ -32,6 +31,25 @@ const ErrorPage: Component<{ error: unknown; reset: () => void }> = props => {
                     Try a re-render
                 </button>
             </div>
+            <h4>Stack trace (include this in the bug report):</h4>
+            {(() => {
+                const stack = props.error instanceof Error ? props.error.stack! : JSON.stringify(props.error)
+                return (
+                    <div class={styles.StackContainer}>
+                        <code class={styles.Stack}>{stack}</code>
+                        <button
+                            class={`${styles.Button} ${styles.CopyButton}`}
+                            type="button"
+                            onClick={() => {
+                                navigator.clipboard.writeText(stack)
+                                alert('Stack trace copied')
+                            }}
+                        >
+                            Copy
+                        </button>
+                    </div>
+                )
+            })()}
         </main>
     )
 }
