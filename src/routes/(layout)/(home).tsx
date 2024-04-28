@@ -83,7 +83,7 @@ export default (() => {
                     <Row as="ul" wrap gap="xs">
                         <For each={Skills}>
                             {skill => (
-                                <li>
+                                <li class={styles.SkillItem}>
                                     <Touchable
                                         as={Row}
                                         asProps={{
