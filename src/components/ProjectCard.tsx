@@ -15,6 +15,7 @@ const ProjectCard: Component<ProjectCardProps> = props => {
             flex
             as={Column}
             asProps={{
+                gap: 'none',
                 as: 'a',
                 target: '_blank',
                 rel: 'noreferrer',
@@ -29,7 +30,7 @@ const ProjectCard: Component<ProjectCardProps> = props => {
                     <h3>{props.name}</h3>
                     <p style="margin: 0">{props.description}</p>
                 </Column>
-                <Row as="p" gap="xs" class={styles.Hint} aria-hidden="true">
+                <Row as="p" gap="rxs" centerVertical class={styles.Hint} aria-hidden="true">
                     {props.hint ?? 'Learn more'} <IconNext />
                 </Row>
             </Column>
