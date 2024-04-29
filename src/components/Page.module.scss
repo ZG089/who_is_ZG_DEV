@@ -19,7 +19,7 @@
 
 // TODO: Put these as a constant?
 .Section {
-  max-width: 48rem;
+  max-width: 40rem;
   padding-block: min(4vh, var(--gap-larger));
 }
 
@@ -73,6 +73,14 @@
 
 .G-xxxl {
   gap: var(--gap-insanely-large);
+}
+
+.G-rsm {
+  gap: var(--gap-relative-small);
+}
+
+.G-rxs {
+  gap: var(--gap-relative-smaller);
 }
 
 @keyframes slideFadeIn {
