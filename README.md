@@ -23,13 +23,19 @@ It's my website! I think having a website is cool, so I'm trying to make it real
 
 3. Make some changes _(optional)_
 
-4. Build the site
+4. Format your code _(recommended)_
+
+   ```sh
+   bun format
+   ```
+
+5. Build the site
 
    ```sh
    bun run build
    ```
 
-5. Preview the built site _(optional)_
+6. Preview the built site _(optional)_
 
    ```sh
    bun start
