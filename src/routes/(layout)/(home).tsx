@@ -1,4 +1,4 @@
-import { type Component, For, Show } from 'solid-js'
+import { type Component, For } from 'solid-js'
 import { Column, LinkButton, LinkIconButton, Page, ProjectCard, Row, Section, Touchable } from '~/components'
 
 import IconDiscord from '~/assets/icons/discord.svg'
