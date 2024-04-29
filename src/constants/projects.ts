@@ -10,8 +10,7 @@ const Projects = [
     },
     {
         name: 'ReVanced',
-        description:
-            'Free and open-source patcher to modify Android applications.',
+        description: 'Free and open-source patcher to modify Android applications.',
         image: '/assets/images/projects/revanced.svg',
         href: 'https://revanced.app',
         hint: 'Visit website',
@@ -25,7 +24,7 @@ const Projects = [
     },
     {
         name: 'Other projects',
-        description: "My other projects and contributions are on GitHub.",
+        description: 'My other projects and contributions are on GitHub.',
         href: 'https://github.com/PalmDevs',
         image: '/assets/images/projects/other.svg',
         hint: 'Explore more',
