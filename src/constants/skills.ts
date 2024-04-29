@@ -54,6 +54,16 @@ const Skills = [
         link: 'https://figma.com',
     },
     {
+        name: 'Linux (Basics)',
+        icon: '/assets/images/skills/linux.svg',
+        link: 'https://en.wikipedia.org/wiki/Linux',
+    },
+    {
+        name: 'Git',
+        icon: '/assets/images/skills/git.svg',
+        link: 'https://git-scm.com',
+    },
+    {
         name: 'GitHub Actions',
         icon: '/assets/images/skills/gha.svg',
         link: 'https://github.com/features/actions',

@@ -3,15 +3,14 @@ import type { ProjectCardProps } from '~/components/ProjectCard'
 const Projects = [
     {
         name: 'My Website',
-        description: "You're on it right now. Thanks for checking it out!",
+        description: "You're on it right now. Thanks for checking in!",
         href: 'https://github.com/PalmDevs/website',
         image: '/assets/images/projects/website.svg',
-        hint: 'View repository',
+        hint: 'View source',
     },
     {
         name: 'ReVanced',
-        description:
-            'A patcher to modify Android applications, allowing for long-lasting patches to be created with little maintainance.',
+        description: 'Free and open-source patcher to modify Android applications.',
         image: '/assets/images/projects/revanced.svg',
         href: 'https://revanced.app',
         hint: 'Visit website',
@@ -25,10 +24,10 @@ const Projects = [
     },
     {
         name: 'Other projects',
-        description: "My other projects and contributions are on GitHub. Let's explore!",
+        description: 'My other projects and contributions are on GitHub.',
         href: 'https://github.com/PalmDevs',
         image: '/assets/images/projects/other.svg',
-        hint: 'Explore on GitHub',
+        hint: 'Explore more',
     },
 ] as const satisfies ProjectCardProps[]
 

@@ -19,8 +19,8 @@
 
 // TODO: Put these as a constant?
 .Section {
-  max-width: 48rem;
-  padding-block: min(6vh, var(--gap-very-large))
+  max-width: 40rem;
+  padding-block: min(4vh, var(--gap-larger));
 }
 
 .FH-Row, .FH-Col {
@@ -73,6 +73,14 @@
 
 .G-xxxl {
   gap: var(--gap-insanely-large);
+}
+
+.G-rsm {
+  gap: var(--gap-relative-small);
+}
+
+.G-rxs {
+  gap: var(--gap-relative-smaller);
 }
 
 @keyframes slideFadeIn {

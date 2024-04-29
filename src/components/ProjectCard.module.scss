@@ -23,12 +23,16 @@
   padding: var(--gap-large);
   justify-content: space-between;
 
-  & p {
-    // TODO: Maybe it wasn't a good idea to do 1.1em for paragraphs?
-    font-size: 1rem;
-    margin: 0;
+  font-size: 0.9em;
 
-    @media (max-width: queries.$mw-mobile) {
+  & p {
+    margin: 0;
+  }
+
+  @media (max-width: queries.$mw-mobile) {
+    padding: var(--gap-medium);
+
+    & p {
       text-wrap: balance;
     }
   }
@@ -49,10 +53,10 @@
     height: 8rem;
     object-fit: contain;
 
-    @media (max-width: queries.$mw-mobile) {
-      width: 6rem;
-      height: 6rem;
-    }
+    // @media (max-width: queries.$mw-mobile) {
+    //   width: 6rem;
+    //   height: 6rem;
+    // }
   }
 
   .Card:where(:hover, :focus-visible) & {
@@ -70,4 +74,10 @@
 .Hint {
   color: var(--primary);
   font-weight: var(--weight-label);
+  font-size: var(--text-label);
+
+  & > svg {
+    width: 1rem;
+    height: 1rem
+  }
 }

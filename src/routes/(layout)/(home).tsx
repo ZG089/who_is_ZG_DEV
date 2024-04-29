@@ -1,4 +1,4 @@
-import { type Component, For, Show } from 'solid-js'
+import { type Component, For } from 'solid-js'
 import { Column, LinkButton, LinkIconButton, Page, ProjectCard, Row, Section, Touchable } from '~/components'
 
 import IconDiscord from '~/assets/icons/discord.svg'
@@ -16,7 +16,7 @@ export default (() => {
     return (
         <GlowingBackground>
             <Page>
-                <Section constrainSize>
+                <Section constrainSize style="padding-block: min(8vh, var(--gap-insanely-large));">
                     <Column gap="none" class={sharedStyles.DirectTextChildrenAlignCenter}>
                         {/* biome-ignore lint/a11y/useHeadingContent: Screen readers kinda suck, so here's a workaround */}
                         <h1 aria-label="Hey there, I'm Palm">
@@ -35,14 +35,7 @@ export default (() => {
                             useful things look good and accessible to everyone.
                         </p>
                     </Column>
-                    <Row
-                        as="ul"
-                        gap="md"
-                        centerHorizontal
-                        wrap
-                        style="padding-block-start: var(--gap-small)"
-                        aria-label="My socials"
-                    >
+                    <Row as="ul" gap="md" centerHorizontal wrap aria-label="My socials">
                         <For each={Object.values(Socials)}>
                             {social => (
                                 <li>
@@ -76,15 +69,15 @@ export default (() => {
                         &lt;/Projects&gt;
                     </p>
                 </Section>
-                <Section>
+                <Section gap="xs">
                     <Column gap="none">
-                        <h2>Skills</h2>
-                        <p>These are the technologies I know and use regularly.</p>
+                        <h2>Skillset</h2>
+                        <p>These are some of the technologies I know and use regularly.</p>
                     </Column>
                     <Row as="ul" wrap gap="xs">
                         <For each={Skills}>
                             {skill => (
-                                <li>
+                                <li class={styles.SkillItem}>
                                     <Touchable
                                         as={Row}
                                         asProps={{
