@@ -69,10 +69,10 @@ export default (() => {
                         &lt;/Projects&gt;
                     </p>
                 </Section>
-                <Section>
+                <Section gap="xs">
                     <Column gap="none">
-                        <h2>Skills</h2>
-                        <p>These are the technologies I know and use regularly.</p>
+                        <h2>Skillset</h2>
+                        <p>These are some of the technologies I know and use regularly.</p>
                     </Column>
                     <Row as="ul" wrap gap="xs">
                         <For each={Skills}>
