@@ -22,16 +22,20 @@ const GlowingBackground: Component<{
             '(prefers-contrast:more),(prefers-reduced-transparency:reduce),(prefers-reduced-motion:reduce),print',
         )
 
-        setEffectDisabled(prefersNoEffect.matches)
+        const handler = (e: Pick<MediaQueryListEvent, 'matches'>) => {
+            log('log', 'User prefers accessibility options, disabling')
+            setEffectDisabled(e.matches)
+        }
 
-        const handler = (e: MediaQueryListEvent) => setEffectDisabled(e.matches)
+        handler(prefersNoEffect)
+
         prefersNoEffect.addEventListener('change', handler)
         onCleanup(() => prefersNoEffect.removeEventListener('change', handler))
     })
 
     // More conditions to disable effects
     createEffect(() => {
-        if (effectDisabled()) return log('log', 'User prefers accessibility options, disabling')
+        if (effectDisabled()) return
 
         if ('mozInnerScreenX' in window && typeof window.mozInnerScreenX !== 'undefined') {
             // Firefox with low opacity gradient sucks
