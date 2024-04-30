@@ -1,8 +1,18 @@
-import { type Component, For, type JSX, createEffect, onCleanup, onMount } from 'solid-js'
+import {
+    type Component,
+    For,
+    type JSX,
+    createEffect,
+    onCleanup,
+    onMount,
+    createSignal,
+    useContext,
+} from 'solid-js'
 import { Portal } from 'solid-js/web'
 
 import { logger } from '~/utils'
 import styles from './GlowingBackground.module.scss'
+import { ThemeContext } from '~/contexts'
 
 const GlowingBackground: Component<{
     children: JSX.Element | JSX.Element[]
@@ -10,19 +20,75 @@ const GlowingBackground: Component<{
     orbs?: number
     scrollStiffness?: number
 }> = props => {
-    const handleRef = (ref: HTMLDivElement) => {
-        // Firefox with low opacity gradient sucks
+    const theme = useContext(ThemeContext)
+    const log = (method: keyof typeof logger, ...args: unknown[]) => logger[method]('GlowingBackground', ...args)
+
+    const [effectDisabled, setEffectDisabled] = createSignal(false)
+
+    // Listen and set media query changes
+    onMount(() => {
+        const prefersNoEffect = matchMedia(
+            '(prefers-contrast:more),(prefers-reduced-transparency:reduce),(prefers-reduced-motion:reduce),print',
+        )
+
+        setEffectDisabled(prefersNoEffect.matches)
+
+        const handler = (e: MediaQueryListEvent) => setEffectDisabled(e.matches)
+        prefersNoEffect.addEventListener('change', handler)
+        onCleanup(() => prefersNoEffect.removeEventListener('change', handler))
+    })
+
+    // More conditions to disable effects
+    createEffect(() => {
+        if (effectDisabled()) return log('log', 'User prefers accessibility options, disabling')
+
         if ('mozInnerScreenX' in window && typeof window.mozInnerScreenX !== 'undefined') {
-            logger.log('GlowingBackground', 'User is on Firefox (which has terrible rendering), disabling')
-            return ref.remove()
-        }
+            // Firefox with low opacity gradient sucks
+            log('log', 'Firefox browser detected, disabling')
+        } else if (theme.colorScheme !== 'dark') {
+            log('log', 'Not using dark color scheme, disabling')
+        } else return log('log', 'No conditions matched, effect is enabled')
+
+        setEffectDisabled(true)
+    })
+
+    const handleRef = (ref: HTMLDivElement) => {
+        // Handle effect disables
+        createEffect(() =>
+            effectDisabled() ? ref.style.setProperty('display', 'none') : ref.style.removeProperty('display'),
+        )
+
+        // Handle initial animation
+        createEffect(() => {
+            if (effectDisabled()) return
+
+            const elements = [...ref.children] as [HTMLElement, ...HTMLElement[]]
+
+            // Randomize initial positions
+            animateGlow(elements)
+            // Requesting the next frame so the randomized positions are already rendered
+            requestAnimationFrame(() => {
+                // Randomize them again so it animates while it's still invisible
+                requestAnimationFrame(() => animateGlow(elements))
+                // Finally make it visible
+                requestAnimationFrame(() => {
+                    ref.style.removeProperty('opacity')
+                    log('log', 'Component visuals ready')
+                })
+            })
+
+            const interval = setInterval(() => animateGlow(elements), props.reanimateInterval ?? 30000)
+            onCleanup(() => clearInterval(interval))
+        })
 
         // Handle scrolling parallax effect
-        createEffect(() => {
+        onMount(() => {
+            if (effectDisabled()) return
+
             const parentHeight = ref.clientHeight
             const handleScroll = () =>
                 requestAnimationFrame(() => {
-                    logger.debug('GlowingBackground', 'Scroll position updated')
+                    log('debug', 'Scroll position updated')
                     ref.style.top = `-${
                         (parentHeight / (props.scrollStiffness ?? 8.5)) *
                         (window.scrollY / (document.body.clientHeight - window.innerHeight))
@@ -30,27 +96,8 @@ const GlowingBackground: Component<{
                 })
 
             window.addEventListener('scroll', handleScroll)
+            log('log', 'Component parallax scroll ready')
             onCleanup(() => window.removeEventListener('scroll', handleScroll))
-        })
-
-        // Handle initial animation
-        createEffect(() => {
-            const elements = [...ref.children] as [HTMLElement, ...HTMLElement[]]
-
-            // Randomize initial positions
-            animateGlow(elements)
-            requestAnimationFrame(() => {
-                // Randomize them again so it animates while it's still invisible
-                requestAnimationFrame(() => animateGlow(elements))
-                // Finally make it visible
-                requestAnimationFrame(() => {
-                    ref.style.removeProperty('opacity')
-                    logger.log('GlowingBackground', 'Component initialized')
-                })
-            })
-
-            const interval = setInterval(() => animateGlow(elements), props.reanimateInterval ?? 30000)
-            onCleanup(() => clearInterval(interval))
         })
     }
 
@@ -69,7 +116,7 @@ const GlowingBackground: Component<{
 export default GlowingBackground
 
 const animateGlow = (elements: HTMLElement[]) => {
-    logger.debug('GlowingBackground', 'Animating glow')
+    logger.debug('GlowingBackground.animateGlow', 'Animating glow')
 
     for (const elem of elements) {
         const xDisposition = Math.random() * 80
