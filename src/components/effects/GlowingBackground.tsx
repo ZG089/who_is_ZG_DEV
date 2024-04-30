@@ -1,18 +1,9 @@
-import {
-    type Component,
-    For,
-    type JSX,
-    createEffect,
-    onCleanup,
-    onMount,
-    createSignal,
-    useContext,
-} from 'solid-js'
+import { type Component, For, type JSX, createEffect, createSignal, onCleanup, onMount, useContext } from 'solid-js'
 import { Portal } from 'solid-js/web'
 
+import { ThemeContext } from '~/contexts'
 import { logger } from '~/utils'
 import styles from './GlowingBackground.module.scss'
-import { ThemeContext } from '~/contexts'
 
 const GlowingBackground: Component<{
     children: JSX.Element | JSX.Element[]
