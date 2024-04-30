@@ -1,4 +1,4 @@
-import { type Accessor, type Component, type JSX, createContext, createEffect, createSignal, onCleanup } from 'solid-js'
+import { type Component, type JSX, createContext, createEffect, createSignal, onCleanup, onMount } from 'solid-js'
 import { createStore } from 'solid-js/store'
 import { ThemeCycleMap } from './constants/theme'
 import { logger } from './utils'
@@ -33,28 +33,29 @@ export const ThemeProvider: Component<{ children: JSX.Element | JSX.Element[] }>
                 theme: value,
             })
 
+            logger.log('ThemeProvider', `Theme set to "${theme.theme}" with color scheme "${theme.colorScheme}"`)
             document.documentElement.dataset.theme = theme.colorScheme
-            logger.log('ThemeProvider', `Theme to "${value}" with color scheme "${theme.colorScheme}"`)
         },
         cycle: () => {
             theme.set(ThemeCycleMap[theme.theme])
         },
     })
 
-    createEffect(() => {
-        const mq = matchMedia('(prefers-color-scheme:light)')
+    onMount(() => {
+        const prefersLightTheme = matchMedia('(prefers-color-scheme:light)')
         const override = localStorage.getItem('theme_override') as ThemeColorScheme
 
         setTheme({
             theme: override ?? 'auto',
+            colorScheme: override ?? prefersLightTheme.matches ? 'light' : 'dark',
             initialized: true,
         })
 
         logger.log('ThemeProvider', `Initialized with theme "${theme.theme}" and color scheme "${theme.colorScheme}"`)
 
         const listener = () => !localStorage.getItem('theme_override') && theme.set('auto')
-        mq.addEventListener('change', listener)
-        onCleanup(() => mq.removeEventListener('change', listener))
+        prefersLightTheme.addEventListener('change', listener)
+        onCleanup(() => prefersLightTheme.removeEventListener('change', listener))
     })
 
     return <ThemeContext.Provider value={theme}>{props.children}</ThemeContext.Provider>
