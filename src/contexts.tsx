@@ -47,7 +47,7 @@ export const ThemeProvider: Component<{ children: JSX.Element | JSX.Element[] }>
 
         setTheme({
             theme: override ?? 'auto',
-            colorScheme: override ?? prefersLightTheme.matches ? 'light' : 'dark',
+            colorScheme: override ?? (prefersLightTheme.matches ? 'light' : 'dark'),
             initialized: true,
         })
 
