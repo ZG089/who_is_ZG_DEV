@@ -23,7 +23,7 @@ const GlowingBackground: Component<{
         )
 
         const handler = (e: Pick<MediaQueryListEvent, 'matches'>) => {
-            log('log', 'User prefers accessibility options, disabling')
+            if (e.matches) log('log', 'User prefers accessibility options, disabling')
             setEffectDisabled(e.matches)
         }
 
@@ -35,14 +35,15 @@ const GlowingBackground: Component<{
 
     // More conditions to disable effects
     createEffect(() => {
-        if (effectDisabled()) return
-
         if ('mozInnerScreenX' in window && typeof window.mozInnerScreenX !== 'undefined') {
             // Firefox with low opacity gradient sucks
             log('log', 'Firefox browser detected, disabling')
         } else if (theme.colorScheme !== 'dark') {
             log('log', 'Not using dark color scheme, disabling')
-        } else return log('log', 'No conditions matched, effect is enabled')
+        } else {
+            log('log', 'No conditions matched, effect is enabled')
+            return setEffectDisabled(false)
+        }
 
         setEffectDisabled(true)
     })
