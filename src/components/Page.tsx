@@ -9,7 +9,7 @@ import styles from './Page.module.scss'
 export const Page: Component<ComponentProps<'main'>> = props => {
     return (
         <Column as="main" flex centerHorizontal {...props} tabIndex="-1">
-            <Column flex centerHorizontal id="content">
+            <Column centerHorizontal id="content">
                 {props.children}
             </Column>
         </Column>
