@@ -5,6 +5,7 @@
 
 :root {
   --line-height: 1.5;
+  --line-height-heading: 1.2;
 
   --text-display: 3.5em;
   --text-title: 2.5em;
@@ -49,6 +50,7 @@ h6 {
 h1,
 h2,
 h3 {
+  line-height: var(--line-height-heading);
   color: var(--neutral-high);
   text-wrap: balance;
 }
