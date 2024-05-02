@@ -41,13 +41,16 @@ main {
 * {
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: contain;
   // Fixes precision issues with outline
   outline-offset: -1px;
 }
 
-html {
+:root {
   color-scheme: dark light;
   scroll-behavior: smooth;
+  accent-color: var(--primary);
+  scroll-padding: 6rem;
 }
 
 body {
