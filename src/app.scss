@@ -50,7 +50,10 @@ main {
   color-scheme: dark light;
   scroll-behavior: smooth;
   accent-color: var(--primary);
+  // Estimated height for NavDock + its margins
   scroll-padding: 6rem;
+  // Restores navigation gestures
+  overscroll-behavior: auto;
 }
 
 body {
