@@ -81,7 +81,7 @@ export default (() => {
                                     <Touchable
                                         as={Row}
                                         asProps={{
-                                            gap: 'sm',
+                                            gap: 'xs',
                                             as: 'a',
                                             href: skill.link,
                                             target: '_blank',
