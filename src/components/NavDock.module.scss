@@ -17,7 +17,7 @@
   outline: var(--line-style) transparent;
 
   transition: var(---duration-short);
-  transition-property: background-color, outline-color;
+  transition-property: background-color, outline-color, backdrop-filter;
 
   &:has(.ActiveItem) .Highlight {
     opacity: 1;
