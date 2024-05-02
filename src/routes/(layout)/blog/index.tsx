@@ -8,7 +8,7 @@ import sharedStyles from '~/styles/shared.module.scss'
 export default (() => {
     return (
         <Page>
-            <Section constrainSize>
+            <Section centerHorizontal constrainSize>
                 <Column gap="none" class={sharedStyles.DirectTextChildrenAlignCenter}>
                     {/* biome-ignore lint/a11y/useHeadingContent: Screen readers kinda suck, so here's a workaround */}
                     <h1 aria-label="Coming soon">

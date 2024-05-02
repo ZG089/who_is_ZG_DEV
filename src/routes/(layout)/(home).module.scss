@@ -4,7 +4,6 @@
   display: grid;
   grid-template-columns: 1.5fr 0.75fr 0.25fr 1.5fr;
   grid-template-rows: 1fr 0.25fr;
-  max-width: 48rem;
   gap: var(--gap-small);
   grid-template-areas:
     "a b b b"

@@ -13,7 +13,7 @@ const Layout: Component<RouteSectionProps> = props => {
             <NavDock
                 pages={[
                     { name: 'Home', href: '/', icon: IconHome },
-                    { name: 'Blog', href: '/blog', icon: IconBlog },
+                    { name: 'Blog', href: '/blog', icon: IconBlog, matchSubroutes: true },
                 ]}
                 links={[
                     {

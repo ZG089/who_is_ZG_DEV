@@ -78,7 +78,7 @@ const NavDock: Component<NavDockProps> = props => {
                                                 href: page.href,
                                                 inactiveClass: '',
                                                 activeClass: styles.ActiveItem,
-                                                end: true,
+                                                end: !page.matchSubroutes,
                                                 onClick: e => {
                                                     if (
                                                         !(e.currentTarget as HTMLAnchorElement).classList.contains(
@@ -180,4 +180,5 @@ interface LinkConfig {
     icon: IconType
     href: string
     name: string
+    matchSubroutes?: boolean
 }

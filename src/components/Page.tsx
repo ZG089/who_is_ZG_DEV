@@ -9,7 +9,7 @@ import styles from './Page.module.scss'
 export const Page: Component<ComponentProps<'main'>> = props => {
     return (
         <Column as="main" flex centerHorizontal {...props} tabIndex="-1">
-            <Column flex centerHorizontal id="content">
+            <Column centerHorizontal id="content">
                 {props.children}
             </Column>
         </Column>
@@ -91,7 +91,7 @@ export type FlexHelperProps<E extends ElementType> = FlexHelperCustomProps<E> &
 type FlexHelperCustomProps<E extends ElementType> = {
     as?: E
     asProps?: ComponentProps<E>
-    gap?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl' | 'rsm' | 'rxs'
+    gap?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl' | 'rsm' | 'rxs' | 'rm'
     flex?: boolean
     wrap?: boolean
     centerVertical?: boolean

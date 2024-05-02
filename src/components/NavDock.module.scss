@@ -17,7 +17,7 @@
   outline: var(--line-style) transparent;
 
   transition: var(---duration-short);
-  transition-property: background-color, outline-color;
+  transition-property: background-color, outline-color, backdrop-filter;
 
   &:has(.ActiveItem) .Highlight {
     opacity: 1;
@@ -32,7 +32,7 @@
     }
 
     @media not print and (prefers-contrast: more) and (prefers-reduced-transparency: reduce) and (prefers-reduced-motion: reduce) {
-      backdrop-filter: blur(var(--gap-small));
+      backdrop-filter: blur(var(--gap-small)) brightness(80%);
       background-color: color-mix(in srgb, var(--surface-low), transparent 10%);
 
       & .Highlight {
@@ -43,7 +43,6 @@
         );
       }
     }
-    
   }
 }
 

@@ -7,6 +7,9 @@
 }
 
 :global(#content) {
+  width: 100%;
+  // TODO: Put these as a constant?
+  max-width: 44rem;
   padding: var(--gap-larger);
 
   // Mobile will have larger padding so it isn't as close to screen edges
@@ -17,13 +20,13 @@
   align-items: stretch;
 }
 
-// TODO: Put these as a constant?
 .Section {
-  max-width: 40rem;
+  // TODO: Put these as a constant?
   padding-block: min(4vh, var(--gap-larger));
 }
 
-.FH-Row, .FH-Col {
+.FH-Row,
+.FH-Col {
   display: flex;
 }
 
@@ -73,6 +76,10 @@
 
 .G-xxxl {
   gap: var(--gap-insanely-large);
+}
+
+.G-rm {
+  gap: var(--gap-relative-medium);
 }
 
 .G-rsm {
