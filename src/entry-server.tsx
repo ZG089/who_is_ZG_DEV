@@ -27,15 +27,10 @@ export default createHandler(() => (
                     <link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
                     <link
                         rel="preload"
-                        href="https://fonts.googleapis.com/css2?family=Inter:wght@400..800&display=swap"
+                        href="https://fonts.bunny.net/css?family=inter:400,500,600,700,800|jetbrains-mono:400"
                         as="style"
                     />
-                    <link
-                        rel="preload"
-                        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap"
-                        as="style"
-                    />
-                    <link rel="preconnect" href="https://fonts.gstatic.com" as="font" />
+                    <link rel="preconnect" href="https://fonts.bunny.net" as="font" />
                 </head>
                 <script>
                     document.documentElement.dataset.theme = localStorage.getItem('theme_override') ??
