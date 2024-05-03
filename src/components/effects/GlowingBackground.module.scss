@@ -24,7 +24,7 @@
   transition: opacity 5s, top 1.5s var(--easing);
 
   @media (max-width: queries.$mw-mobile) {
-    opacity: 0.6;
+    opacity: 0.5;
   }
 
   & > * {
