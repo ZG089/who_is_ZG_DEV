@@ -1,7 +1,18 @@
 import { type Component, For, useContext } from 'solid-js'
 import { createStore } from 'solid-js/store'
 
-import { Button, Column, IconButton, type IconType, LinkButton, NavDock, Page, Row, Section } from '~/components'
+import {
+    Button,
+    Column,
+    Divider,
+    IconButton,
+    type IconType,
+    LinkButton,
+    NavDock,
+    Page,
+    Row,
+    Section,
+} from '~/components'
 import { HoverZoomRepel } from '~/components/effects'
 
 import { undefinedIf } from '~/utils'
@@ -25,7 +36,7 @@ export default (() => {
     return (
         <Page>
             <Column gap="xxxl">
-                <Row>
+                <Row wrap>
                     <Button onClick={theme.cycle}>
                         Cycle theme (currently <code>{theme.theme}</code>)
                     </Button>
@@ -92,7 +103,11 @@ export default (() => {
                 <Section>
                     <Column>
                         <h2>Components</h2>
-                        <hr style="width: 100%; border: 2px solid var(--surface-medium)" />
+                        <Column>
+                            <h3>Divider</h3>
+                            <Divider />
+                        </Column>
+                        <Divider />
                         <Row wrap gap="xxxl">
                             <Column>
                                 <h3>Navigation dock</h3>
@@ -110,8 +125,8 @@ export default (() => {
                                             icon: IconSource,
                                         },
                                         {
-                                            name: 'Test',
-                                            href: '/test',
+                                            name: 'Dev',
+                                            href: '/dev',
                                             icon: IconSource,
                                         },
                                         {
@@ -131,7 +146,7 @@ export default (() => {
                             </Column>
                             <Column>
                                 <h3>Buttons</h3>
-                                <Row>
+                                <Row wrap>
                                     <For each={['primary', 'secondary', 'tertiary'] as const}>
                                         {variant => (
                                             <Button {...buttonProps} variant={variant}>
@@ -147,7 +162,7 @@ export default (() => {
                                         )}
                                     </For>
                                 </Row>
-                                <Row>
+                                <Row wrap>
                                     <Button
                                         onClick={() =>
                                             setButtonProps({
@@ -167,7 +182,7 @@ export default (() => {
                                         Trailing icon: {String(Boolean(buttonProps.trailingIcon))}
                                     </Button>
                                 </Row>
-                                <hr style="width: 100%; border: 2px solid var(--surface-medium)" />
+                                <Divider />
                                 <Column>
                                     <h3>Icon buttons</h3>
                                     <For each={['small', 'medium', 'large'] as const}>
@@ -197,7 +212,7 @@ export default (() => {
                                     </For>
                                 </Column>
                                 {/* TODO: Divider */}
-                                <hr style="width: 100%; border: 2px solid var(--surface-medium)" />
+                                <Divider />
                                 <Row>
                                     <Button onClick={() => setButtonProps({ disabled: !buttonProps.disabled })}>
                                         Disabled: {String(buttonProps.disabled)}

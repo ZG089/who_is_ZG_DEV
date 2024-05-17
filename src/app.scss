@@ -51,6 +51,7 @@ main {
   accent-color: var(--primary);
   // Estimated height for NavDock + its margins
   scroll-padding: 6rem;
+  scrollbar-gutter: stable both-edges;
 }
 
 body {
@@ -73,7 +74,7 @@ button {
   font-size: var(--text-label);
 }
 
-ul:not([role="list"]) {
+ul[data-no-marker="true"] {
   list-style: none;
   margin: 0;
   padding: 0;

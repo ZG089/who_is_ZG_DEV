@@ -3,6 +3,7 @@ import { Dynamic } from 'solid-js/web'
 
 import type { Component, ComponentProps, JSX } from 'solid-js'
 
+import { combineClassNames } from '~/utils'
 import styles from './HoverZoomRepel.module.scss'
 
 const HoverZoomRepel = <E extends ElementType>(
@@ -48,10 +49,19 @@ const HoverZoomRepel = <E extends ElementType>(
         })
     }
 
-    return <Dynamic component={local.as ?? 'div'} ref={handleRef} class={styles.Tiltable} {...others} />
+    return (
+        <Dynamic
+            component={local.as ?? 'div'}
+            ref={handleRef}
+            {...others}
+            class={combineClassNames(styles.Tiltable, props.class)}
+        />
+    )
 }
 
 export default HoverZoomRepel
+
+export const HoverTargetClassName = styles.HoverTarget
 
 // biome-ignore lint/suspicious/noExplicitAny: Typings
 type ElementType = 'div' | 'img' | 'p' | 'a' | Component<any>
@@ -59,5 +69,5 @@ type HoverZoomRepelProps<E extends ElementType> = {
     as?: E
     tiltPerspective?: string
     tiltScale?: string
-    children: JSX.Element | JSX.Element[]
+    children?: JSX.Element | JSX.Element[]
 }

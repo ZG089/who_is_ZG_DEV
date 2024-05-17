@@ -4,14 +4,9 @@
   --gap-small: 0.75rem;
   --gap-medium: 1rem;
   --gap-large: 1.25rem;
-  --gap-larger: 2rem;
-  --gap-very-large: 4rem;
+  --gap-larger: 1.5rem;
+  --gap-very-large: 2rem;
   --gap-insanely-large: 8rem;
-  
-  // Relative gaps
-  --gap-relative-smaller: 0.125em;
-  --gap-relative-small: 0.5em;
-  --gap-relative-medium: 1em;
 
   // Sizes
   --size-smaller: 1rem;
@@ -32,11 +27,11 @@
   --radius-small: 0.5rem;
 
   // Durations
-  ---duration-shorter: 0.1s;
-  ---duration-short: 0.25s;
-  ---duration-medium: 0.5s;
-  ---duration-long: 0.75s
-  ---duration-longer: 1s;
+  --duration-shorter: 0.1s;
+  --duration-short: 0.25s;
+  --duration-medium: 0.5s;
+  --duration-long: 0.75s;
+  --duration-longer: 1s;
 
   // Easings
   --easing: cubic-bezier(0.19, 1, 0.22, 1);

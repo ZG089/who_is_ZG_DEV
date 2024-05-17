@@ -8,8 +8,8 @@ import styles from './Page.module.scss'
 
 export const Page: Component<ComponentProps<'main'>> = props => {
     return (
-        <Column as="main" flex centerHorizontal {...props} tabIndex="-1">
-            <Column centerHorizontal id="content">
+        <Column as="main" flex centerHorizontal tabIndex="-1">
+            <Column {...props} centerHorizontal class={combineClassNames(props.class, styles.Content)}>
                 {props.children}
             </Column>
         </Column>
@@ -91,7 +91,7 @@ export type FlexHelperProps<E extends ElementType> = FlexHelperCustomProps<E> &
 type FlexHelperCustomProps<E extends ElementType> = {
     as?: E
     asProps?: ComponentProps<E>
-    gap?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl' | 'rsm' | 'rxs' | 'rm'
+    gap?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl'
     flex?: boolean
     wrap?: boolean
     centerVertical?: boolean

@@ -7,16 +7,6 @@ export default createHandler(() => (
             <html lang="en">
                 <head>
                     <meta charset="utf-8" />
-                    <title>Palm (PalmDevs)</title>
-                    <meta
-                        name="description"
-                        content="I'm a 15-year-old self-taught full-stack developer and a UI/UX designer. I want to make useful things look good and accessible to everyone. I am known for working in the open-source world, and designing applications."
-                    />
-                    <meta property="og:image" content="/assets/og/image.webp" />
-                    <meta property="og:image:width" content="500" />
-                    <meta property="og:image:height" content="500" />
-                    <meta property="og:image:type" content="image/webp" />
-                    {assets}
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <meta name="theme-color" content="#4ac9ff" />
                     <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
@@ -27,10 +17,11 @@ export default createHandler(() => (
                     <link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
                     <link
                         rel="preload"
-                        href="https://fonts.bunny.net/css?family=inter:400,500,600,700,800|jetbrains-mono:400"
+                        href="https://fonts.bunny.net/css?family=inter:400,500,600,700,800|jetbrains-mono:400&display=swap"
                         as="style"
                     />
                     <link rel="preconnect" href="https://fonts.bunny.net" as="font" />
+                    {assets}
                 </head>
                 <script>
                     document.documentElement.dataset.theme = localStorage.getItem('theme_override') ??
