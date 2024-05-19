@@ -1,4 +1,8 @@
+@use "../../styles/queries";
+
 .Post {
+  width: 100%;
+
   & :is(h1, h2, h3, h4, h5, h6) {
     margin-block: var(--gap-very-large) var(--gap-large);
   }
@@ -70,44 +74,14 @@
   }
 }
 
-.InfoContainerWithCover {
-  --comp-fade-color: #11111405;
-
-  [data-theme="dark"] {
-    --comp-fade-color: #15192205;
-  }
-
-  position: relative;
-  border-radius: var(--radius-medium);
-  overflow: hidden;
-  color: var(--neutral-medium);
-}
-
-.Wrapper {
-  position: absolute;
+/* Increasing specificity */
+.Cover.Cover {
   width: 100%;
-  bottom: 0;
-
-  padding: var(--gap-medium);
-  padding-block-start: var(--gap-insanely-large);
-
-  background-image: linear-gradient(
-    to bottom,
-    transparent,
-    var(--comp-fade-color) 75%
-  );
-
-  pointer-events: none;
-
-  & :is(h1, h2, h3, h4, h5, h6, p, span) {
-    pointer-events: auto;
-    width: fit-content;
-    margin-block-end: var(--gap-smaller);
-  }
+  border-radius: var(--radius-medium);
 }
 
-.Cover {
-  background-color: var(--surface-low);
-  aspect-ratio: 1.91/1;
-  object-fit: cover;
+.Wrapper :is(h1, h2, h3, h4, h5, h6, p, span) {
+  pointer-events: auto;
+  width: fit-content;
+  margin-block-end: var(--gap-small);
 }

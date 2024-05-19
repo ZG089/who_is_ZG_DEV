@@ -4,12 +4,11 @@ import { Show, Suspense, createResource, createSignal, lazy, onCleanup, onMount 
 import { MDXProvider } from 'solid-mdx'
 import { format } from 'timeago.js'
 
-import { Column, Divider, HoverZoomRepel } from '~/components'
-import { HoverTargetClassName } from '~/components/effects/HoverZoomRepel'
+import { Column, Divider } from '~/components'
 import BlogLayout from '~/components/layouts/BlogLayout'
 
 import Posts, { type Post } from '~/constants/posts'
-import { combineClassNames, logger, undefinedIf } from '~/utils'
+import { logger } from '~/utils'
 
 import FourOhFourPage from '~/routes/[...404]'
 
@@ -46,38 +45,23 @@ export default () => {
                         <Title>{`${info().title} • Palm (PalmDevs)`}</Title>
                         <Meta name="description" content={info().description} />
                         <div class={styles.Post}>
-                            <Show when={info().cover?.image}>
-                                {img => (
-                                    <>
-                                        <Meta name="twitter:card" content="summary_large_image" />
-                                        <Meta name="twitter:image:src" content={img()} />
-                                    </>
-                                )}
-                            </Show>
-                            <div
-                                style={undefinedIf(!info().cover, `--comp-fade-color: ${info().cover?.fadeColor}`)}
-                                data-theme={undefinedIf(!info().cover, info().cover!.theme)}
-                                class={combineClassNames(
-                                    HoverTargetClassName,
-                                    undefinedIf(!info().cover, styles.InfoContainerWithCover),
-                                )}
-                            >
-                                <Show when={info().cover?.image}>
+                            <Column as="header" gap="none" class={styles.Wrapper}>
+                                <Show when={info().image}>
                                     {img => (
-                                        <HoverZoomRepel as="img" class={styles.Cover} src={img()} alt="Post cover" />
+                                        <>
+                                            <Meta name="twitter:card" content="summary_large_image" />
+                                            <Meta name="twitter:image:src" content={img()} />
+                                            <img class={styles.Cover} src={img()} alt="Post cover" />
+                                        </>
                                     )}
                                 </Show>
-                                <Column as="header" gap="none" class={styles.Wrapper}>
-                                    <div>
-                                        <h1>{info().title}</h1>
-                                        <p>{info().description}</p>
-                                    </div>
-                                    <p style="color: var(--neutral-lowest)">posted {formattedTime()}</p>
-                                </Column>
-                            </div>
-                            <Show when={!info().cover}>
-                                <Divider />
-                            </Show>
+                                <div>
+                                    <h1>{info().title}</h1>
+                                    <p>{info().description}</p>
+                                </div>
+                                <p style="color: var(--neutral-lowest)">posted {formattedTime()}</p>
+                            </Column>
+                            <Divider />
                             <MDXProvider
                                 components={{
                                     hr: () => <Divider />,
