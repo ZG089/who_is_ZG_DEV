@@ -8,7 +8,7 @@ import { Column, Divider } from '~/components'
 import BlogLayout from '~/components/layouts/BlogLayout'
 
 import Posts, { type Post } from '~/constants/posts'
-import { logger } from '~/utils'
+import { logger, undefinedIf } from '~/utils'
 
 import FourOhFourPage from '~/routes/[...404]'
 
@@ -51,7 +51,7 @@ export default () => {
                                         <>
                                             <Meta name="twitter:card" content="summary_large_image" />
                                             <Meta name="twitter:image:src" content={img()} />
-                                            <img class={styles.Cover} src={img()} alt="Post cover" />
+                                            <img class={styles.Cover} src={img()} style={undefinedIf(!info().imageAspectRatio, `--comp-aspect-ratio: ${info().imageAspectRatio}`)} alt="Post cover" />
                                         </>
                                     )}
                                 </Show>

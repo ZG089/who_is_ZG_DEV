@@ -12,5 +12,6 @@ export interface Post {
     title: string
     description: string
     posted: Date
-    image: string
+    image?: string
+    imageAspectRatio?: number
 }
