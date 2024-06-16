@@ -12,6 +12,7 @@ import {
     Page,
     Row,
     Section,
+    LinkCard
 } from '~/components'
 import { HoverZoomRepel } from '~/components/effects'
 
@@ -211,13 +212,21 @@ export default (() => {
                                         )}
                                     </For>
                                 </Column>
-                                {/* TODO: Divider */}
                                 <Divider />
                                 <Row>
                                     <Button onClick={() => setButtonProps({ disabled: !buttonProps.disabled })}>
                                         Disabled: {String(buttonProps.disabled)}
                                     </Button>
                                 </Row>
+                            </Column>
+                            <Column>
+                                <h3>Link cards</h3>
+                                <LinkCard
+                                    name="Example card"
+                                    description="This is an example card."
+                                    href="https://palmdevs.me"
+                                    preview={() => <div style="background-color: red; padding: 2rem">Preview component area</div>}
+                                />
                             </Column>
                         </Row>
                     </Column>
