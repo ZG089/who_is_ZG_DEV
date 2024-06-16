@@ -1,8 +1,7 @@
 import { Meta, Title } from '@solidjs/meta'
 import { type Component, For, Match, Switch, createResource } from 'solid-js'
 
-import { Column, Page, Section } from '~/components'
-import LinkCard from '~/components/LinkCard'
+import { Column, Page, Section, LinkCard } from '~/components'
 import GlowingBackground from '~/components/effects/GlowingBackground'
 import Posts from '~/constants/posts'
 
