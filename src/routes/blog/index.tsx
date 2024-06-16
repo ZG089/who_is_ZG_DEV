@@ -3,8 +3,8 @@ import { Column, LinkButton, Page, Section } from '~/components'
 
 import IconHome from '~/assets/icons/nav/home.svg'
 
-import sharedStyles from '~/styles/shared.module.scss'
 import { Meta, Title } from '@solidjs/meta'
+import sharedStyles from '~/styles/shared.module.scss'
 
 export default (() => {
     return (
@@ -30,7 +30,7 @@ export default (() => {
                 <LinkButton openInCurrentTab leadingIcon={IconHome} href="/">
                     Alright, go back home
                 </LinkButton>
-                <LinkButton variant='secondary' openInCurrentTab href="/blog/test">
+                <LinkButton variant="secondary" openInCurrentTab href="/blog/test">
                     Let me see the super duper alpha version
                 </LinkButton>
             </Section>

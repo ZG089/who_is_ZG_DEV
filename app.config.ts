@@ -8,9 +8,9 @@ const {
     default: { withImports: mdx },
 } = mdxPkg
 
-import remarkSlug from 'remark-slug'
-import remarkGfm from 'remark-gfm'
 import rehypePrettyCode from 'rehype-pretty-code'
+import remarkGfm from 'remark-gfm'
+import remarkSlug from 'remark-slug'
 
 const defineString = (str?: string) => `"${str || 'unknown'}"`
 

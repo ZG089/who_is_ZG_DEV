@@ -1,12 +1,12 @@
-import { type ComponentProps, Show, type Component } from 'solid-js'
+import { type Component, type ComponentProps, Show } from 'solid-js'
 
 import { Column, Row } from './Page'
 import Touchable from './Touchable'
 
 import IconNext from '~/assets/icons/next.svg'
 
-import styles from './LinkCard.module.scss'
 import { combineClassNames } from '~/utils'
+import styles from './LinkCard.module.scss'
 
 const LinkCard: Component<LinkCardProps> = props => {
     return (
