@@ -8,6 +8,8 @@ const {
     default: { withImports: mdx },
 } = mdxPkg
 
+import rehypePrettyCode from 'rehype-pretty-code'
+import remarkGfm from 'remark-gfm'
 import remarkSlug from 'remark-slug'
 
 const defineString = (str?: string) => `"${str || 'unknown'}"`
@@ -41,7 +43,8 @@ export default defineConfig({
                 jsx: true,
                 jsxImportSource: 'solid-js',
                 providerImportSource: 'solid-mdx',
-                remarkPlugins: [remarkSlug],
+                remarkPlugins: [remarkGfm, remarkSlug],
+                rehypePlugins: [[rehypePrettyCode, {}]],
             }),
             svgPlugin({ defaultAsComponent: true }),
         ],

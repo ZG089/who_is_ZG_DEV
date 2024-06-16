@@ -20,6 +20,8 @@ export default () => {
     // This returns a Promise, since this isn't eager
     // which is great, because we don't want to load the post until we know it's needed
     const post = Posts[params.post]
+    if (!post) return <FourOhFourPage withoutDocTitle />
+
     // This is just a silly workaround because the above returns a promise
     // so we can abuse resources to get the info we need
     const [postInfo] = createResource(post, getPostInfo)
@@ -28,7 +30,7 @@ export default () => {
     const PostComponent = lazy(() => post())
 
     return (
-        <Show when={postInfo()} fallback={<FourOhFourPage withoutDocTitle />}>
+        <Show when={postInfo()} fallback={<p>Loading post...</p>}>
             {info => {
                 const [formattedTime, setFormattedTime] = createSignal(format(info().posted))
 
@@ -51,7 +53,15 @@ export default () => {
                                         <>
                                             <Meta name="twitter:card" content="summary_large_image" />
                                             <Meta name="twitter:image:src" content={img()} />
-                                            <img class={styles.Cover} src={img()} style={undefinedIf(!info().imageAspectRatio, `--comp-aspect-ratio: ${info().imageAspectRatio}`)} alt="Post cover" />
+                                            <img
+                                                class={styles.Cover}
+                                                src={img()}
+                                                style={undefinedIf(
+                                                    !info().imageAspectRatio,
+                                                    `--comp-aspect-ratio: ${info().imageAspectRatio}`,
+                                                )}
+                                                alt="Post cover"
+                                            />
                                         </>
                                     )}
                                 </Show>
