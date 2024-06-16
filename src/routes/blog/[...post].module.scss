@@ -43,20 +43,30 @@
 
   & code {
     background-color: var(--surface-medium);
-    padding: 0.1em 0.25em;
     border-radius: 0.25em;
     font-size: 0.95em;
   }
-
+  
+  & figure {
+    margin: 0;
+  }
+  
   & pre {
     background-color: var(--surface-medium);
     border-radius: var(--radius-medium);
     overflow-x: auto;
-
+    
     & code {
-      width: 100%;
-      display: block;
       padding: var(--gap-medium);
+      display: block;
+      counter-reset: line;
+    }
+     
+    & code > [data-line]::before {
+      counter-increment: line;
+      content: counter(line);
+      color: var(--neutral-lowest);
+      margin-right: var(--gap-large);
     }
   }
 
@@ -71,6 +81,15 @@
 
   & a {
     color: var(--primary);
+  }
+
+  & :global(.contains-task-list) {
+    list-style-type: none;
+    padding-left: var(--gap-large);
+
+    & input[type=checkbox]:disabled {
+      opacity: 1 !important;
+    }
   }
 }
 

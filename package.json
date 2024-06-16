@@ -10,9 +10,11 @@
     "format": "biome check --apply ."
   },
   "dependencies": {
-    "@solidjs/meta": "^0.29.3",
-    "@solidjs/router": "^0.13.3",
-    "@solidjs/start": "^1.0.0-rc.1",
+    "@solidjs/meta": "^0.29.4",
+    "@solidjs/router": "^0.13.5",
+    "@solidjs/start": "^1.0.1",
+    "rehype-pretty-code": "^0.13.2",
+    "remark-gfm": "^4.0.0",
     "remark-slug": "^7.0.1",
     "solid-js": "^1.8.17",
     "timeago.js": "^4.0.2",
@@ -23,9 +25,9 @@
     "node": ">=16"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.7.3",
-    "@vinxi/plugin-mdx": "^3.7.1",
-    "sass": "^1.77.0",
+    "@biomejs/biome": "^1.8.1",
+    "@vinxi/plugin-mdx": "https://gitpkg.now.sh/birkskyum/vinxi/packages/vinxi-mdx?mdx-3-compat",
+    "sass": "^1.77.5",
     "solid-mdx": "^0.0.7"
   },
   "trustedDependencies": ["@biomejs/biome", "esbuild"]
