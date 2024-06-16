@@ -157,7 +157,7 @@ export default (() => {
                                     </For>
                                     <For each={['primary', 'secondary', 'tertiary'] as const}>
                                         {variant => (
-                                            <LinkButton href="https://example.com" {...buttonProps} variant={variant}>
+                                            <LinkButton href="https://palmdevs.me" {...buttonProps} variant={variant}>
                                                 {variant}
                                             </LinkButton>
                                         )}
