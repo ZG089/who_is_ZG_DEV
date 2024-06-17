@@ -1,5 +1,5 @@
 import { Meta, Title } from '@solidjs/meta'
-import { type Component, For, Match, Switch, createResource } from 'solid-js'
+import { type Component, For, createResource, Show } from 'solid-js'
 
 import { Column, Page, Section, LinkCard } from '~/components'
 import GlowingBackground from '~/components/effects/GlowingBackground'
@@ -25,30 +25,28 @@ export default (() => {
                         <p>Welcome to my blog! Here contains random and some interesting stuff.</p>
                     </Column>
                     <div class={styles.Grid}>
-                        <Switch fallback={'No posts here...'}>
-                            <Match when={posts()?.length}>
-                                <For each={posts()}>
-                                    {([href, info]) => {
-                                        return (
-                                            <LinkCard
-                                                class={styles.PostCard}
-                                                name={info.title}
-                                                description={info.description}
-                                                href={`/blog/${href}/`}
-                                                preview={() => (
-                                                    <img
-                                                        style={`--comp-ar: ${info.imageAspectRatio}`}
-                                                        class={styles.PostCardImage}
-                                                        src={info.image}
-                                                        alt="Post cover"
-                                                    />
-                                                )}
-                                            />
-                                        )
-                                    }}
-                                </For>
-                            </Match>
-                        </Switch>
+                        <Show when={posts()?.length} fallback={'No posts here...'}>
+                            <For each={posts()}>
+                                {([href, info]) => {
+                                    return (
+                                        <LinkCard
+                                            class={styles.PostCard}
+                                            name={info.title}
+                                            description={info.description}
+                                            href={`/blog/${href}/`}
+                                            preview={() => (
+                                                <img
+                                                    style={`--comp-ar: ${info.imageAspectRatio}`}
+                                                    class={styles.PostCardImage}
+                                                    src={info.image}
+                                                    alt="Post cover"
+                                                />
+                                            )}
+                                        />
+                                    )
+                                }}
+                            </For>
+                        </Show>
                     </div>
                 </Section>
             </Page>
