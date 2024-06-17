@@ -35,7 +35,7 @@ export default (() => {
     })
 
     return (
-        <Page>
+        <Page noCrawl>
             <Column gap="xxxl">
                 <Row wrap>
                     <Button onClick={theme.cycle}>
