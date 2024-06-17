@@ -35,12 +35,14 @@ export default (() => {
                                             description={info.description}
                                             href={`/blog/${href}/`}
                                             preview={() => (
-                                                <img
-                                                    style={`--comp-ar: ${info.imageAspectRatio}`}
-                                                    class={styles.PostCardImage}
-                                                    src={info.image}
-                                                    alt="Post cover"
-                                                />
+                                                <div class={styles.PostCardImageContainer}>
+                                                    <img
+                                                        style={`--comp-ar: ${info.imageAspectRatio}`}
+                                                        class={styles.PostCardImage}
+                                                        src={info.image}
+                                                        alt="Post cover"
+                                                    />
+                                                </div>
                                             )}
                                         />
                                     )

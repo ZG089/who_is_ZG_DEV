@@ -11,6 +11,7 @@ import styles from './LinkCard.module.scss'
 const LinkCard: Component<LinkCardProps> = props => {
     return (
         <Touchable
+            data-comp={LinkCard.name}
             aria-label={`${props.name}. ${props.description} Tap to ${props.hint}.`}
             {...props}
             class={combineClassNames(styles.Card, props.class)}

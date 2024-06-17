@@ -6,10 +6,24 @@
   transition: all var(--easing-quick) var(--duration-medium);
 }
 
-.PostCardImage {
+.PostCardImageContainer {
   width: 100%;
   height: 10rem;
-  object-fit: cover;
   border-radius: var(--radius-larger);
+  background-color: var(--surface-medium);
+  overflow: hidden;
+  transition: inherit;
+  z-index: var(--layer-content);
+}
+
+.PostCardImage {
+  [data-comp="LinkCard"]:hover & {
+    transform: scale(1.125);
+  }
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   aspect-ratio: var(--comp-ar);
+  transition: var(--easing) var(--duration-longer);
 }

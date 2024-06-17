@@ -7,6 +7,7 @@
   overflow: hidden;
   background-color: var(--surface-low);
   outline: var(--line-style) var(--surface-medium);
+  outline-offset: -2px;
   border-radius: var(--radius-larger);
   align-items: center;
   text-decoration: none;
