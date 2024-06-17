@@ -1,14 +1,18 @@
-import { type Component, type ComponentProps, type JSX, mergeProps, splitProps } from 'solid-js'
+import { type Component, type ComponentProps, type JSX, mergeProps, splitProps, Show } from 'solid-js'
 import { Dynamic } from 'solid-js/web'
 
 import { combineClassNames, undefinedIf } from '~/utils'
 
 import sharedStyles from '~/styles/shared.module.scss'
 import styles from './Page.module.scss'
+import { Meta } from '@solidjs/meta'
 
-export const Page: Component<ComponentProps<'main'>> = props => {
+export const Page: Component<ComponentProps<'main'> & { noCrawl?: boolean }> = props => {
     return (
         <Column as="main" flex centerHorizontal tabIndex="-1">
+            <Show when={props.noCrawl}>
+                <Meta name="robots" content="noindex, nofollow" />
+            </Show>
             <Column {...props} centerHorizontal class={combineClassNames(props.class, styles.Content)}>
                 {props.children}
             </Column>
