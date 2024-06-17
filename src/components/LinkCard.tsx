@@ -5,7 +5,7 @@ import Touchable from './Touchable'
 
 import IconNext from '~/assets/icons/next.svg'
 
-import { combineClassNames } from '~/utils'
+import { combineClassNames, undefinedIf } from '~/utils'
 import styles from './LinkCard.module.scss'
 
 const LinkCard: Component<LinkCardProps> = props => {
@@ -20,8 +20,8 @@ const LinkCard: Component<LinkCardProps> = props => {
             asProps={{
                 gap: 'none',
                 as: 'a',
-                target: '_blank',
-                rel: 'noreferrer',
+                target: props.target ?? undefinedIf(props.openInCurrentTab, '_blank'),
+                rel: undefinedIf(props.openInCurrentTab, 'noreferrer'),
                 href: props.href,
             }}
         >
@@ -47,6 +47,7 @@ export type LinkCardProps = {
     preview?: Component
     href: string
     hint?: string
+    openInCurrentTab?: boolean
 } & ComponentProps<'a'>
 
 export default LinkCard

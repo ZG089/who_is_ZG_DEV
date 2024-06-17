@@ -30,6 +30,7 @@ export default (() => {
                                 {([href, info]) => {
                                     return (
                                         <LinkCard
+                                            openInCurrentTab
                                             class={styles.PostCard}
                                             name={info.title}
                                             description={info.description}
