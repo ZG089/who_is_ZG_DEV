@@ -1,5 +1,15 @@
 @use "../styles/queries";
 
+@media (max-width: queries.$mw-mobile) {
+  .Card .InfoContainer {
+    padding: var(--gap-medium);
+
+    & p {
+      text-wrap: balance;
+    }
+  }
+}
+
 .ImageContainer {
   width: 100%;
   padding: var(--gap-large);
@@ -40,6 +50,6 @@
 
   & > svg {
     width: 1rem;
-    height: 1rem
+    height: 1rem;
   }
 }

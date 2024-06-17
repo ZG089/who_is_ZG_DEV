@@ -8,6 +8,7 @@ import styles from './ProjectCard.module.scss'
 const ProjectCard: Component<ProjectCardProps> = props => {
     return (
         <LinkCard
+            class={styles.Card}
             {...props}
             preview={() => (
                 <Column aria-hidden="true" centerHorizontal centerVertical class={styles.ImageContainer}>
