@@ -7,9 +7,7 @@
   gap: var(--gap-small);
   grid-template-areas:
     "a b b b"
-    "c c d d"
-    "e e e f"
-    "g g h h";
+    "c c d d";
 
   & > * {
     flex: 1;
