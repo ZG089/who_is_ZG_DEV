@@ -23,16 +23,20 @@
   z-index: var(--layer-effect);
   transition: opacity 5s, top 1.5s var(--easing);
 
-  & > * {
+  & > .Orb {
     position: absolute;
     width: 30vmax;
     height: 30vmax;
     transition: 30s;
     transition-property: top, left, transform;
+  }
 
-    @media (max-width: queries.$mw-mobile) {
-      width: 50vmax;
-      height: 50vmax;
+  @media (max-width: queries.$mw-mobile) {
+    opacity: 0.5;
+
+    & > .Orb {
+      width: 35vmax;
+      height: 35vmax;
     }
   }
 }
