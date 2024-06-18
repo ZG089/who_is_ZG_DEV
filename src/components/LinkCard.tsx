@@ -13,7 +13,7 @@ const LinkCard: Component<LinkCardProps> = props => {
 
     return (
         <Touchable
-            data-comp={LinkCard.name}
+            data-comp="LinkCard"
             aria-label={`${props.name}. ${props.description} Tap to ${props.hint}.`}
             {...aProps}
             class={combineClassNames(styles.Card, props.class)}
