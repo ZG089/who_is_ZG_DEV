@@ -4,6 +4,7 @@
 @import url("./styles/layers.scss");
 
 :root {
+  font-size: 0.925rem;
   --themeable-prop-content: color, fill, stroke-color;
   --themeable-prop-layout: background-color, outline-color, border-color,
     box-shadow;
