@@ -12,7 +12,8 @@
   align-items: center;
   text-decoration: none;
 
-  transition: transform var(--duration-longer) var(--easing);
+  transition: var(--duration-longer) var(--easing);
+  transition-property: background-color, transform, outline-color;
 
   &:where(:hover, :focus-visible) {
     background-color: var(--surface-medium);
