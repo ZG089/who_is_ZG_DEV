@@ -19,8 +19,7 @@
   transition-property: background-color;
 
   & > img {
-    transition: inherit;
-    transition-property: transform;
+    transition: transform var(--duration-long) var(--easing);
     width: 8rem;
     height: 8rem;
     object-fit: contain;
@@ -34,7 +33,7 @@
   :where(:hover, :focus-visible) > & {
     background-color: var(--surface-high);
     & > img {
-      transform: scale(1.125);
+      transform: scale(var(--interaction-zoomable-content-scale));
     }
   }
 
