@@ -7,8 +7,8 @@
     rgba(0, 212, 173, 0.015) 45%,
     rgba(1, 255, 157, 0) 70%
   );
-  width: 35vmin;
-  height: 35vmin;
+  width: 35vmax;
+  height: 35vmax;
 }
 
 .Container {
@@ -23,15 +23,16 @@
   z-index: var(--layer-effect);
   transition: opacity 5s, top 1.5s var(--easing);
 
-  @media (max-width: queries.$mw-mobile) {
-    opacity: 0.5;
-  }
-
   & > * {
     position: absolute;
     width: 30vmax;
     height: 30vmax;
     transition: 30s;
     transition-property: top, left, transform;
+
+    @media (max-width: queries.$mw-mobile) {
+      width: 50vmax;
+      height: 50vmax;
+    }
   }
 }

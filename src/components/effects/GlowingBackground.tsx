@@ -86,7 +86,7 @@ const GlowingBackground: Component<{
                 requestAnimationFrame(() => {
                     log('debug', 'Scroll position updated')
                     ref.style.top = `-${
-                        (parentHeight / (props.scrollStiffness ?? 8.5)) *
+                        (parentHeight / (props.scrollStiffness ?? 9.5)) *
                         (window.scrollY / (document.body.clientHeight - window.innerHeight))
                     }px`
                 })
