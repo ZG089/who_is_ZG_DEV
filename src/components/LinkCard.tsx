@@ -1,4 +1,4 @@
-import { type Component, type ComponentProps, Show } from 'solid-js'
+import { type Component, type ComponentProps, Show, splitProps } from 'solid-js'
 
 import { Column, Row } from './Page'
 import Touchable from './Touchable'
@@ -9,11 +9,13 @@ import { combineClassNames, undefinedIf } from '~/utils'
 import styles from './LinkCard.module.scss'
 
 const LinkCard: Component<LinkCardProps> = props => {
+    const [, aProps] = splitProps(props, ['name', 'description', 'preview', 'hint', 'openInCurrentTab', 'class', 'target', 'href']) 
+
     return (
         <Touchable
             data-comp={LinkCard.name}
             aria-label={`${props.name}. ${props.description} Tap to ${props.hint}.`}
-            {...props}
+            {...aProps}
             class={combineClassNames(styles.Card, props.class)}
             flex
             as={Column}
