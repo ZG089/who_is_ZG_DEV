@@ -49,10 +49,25 @@ const GlowingBackground: Component<{
     })
 
     const handleRef = (ref: HTMLDivElement) => {
-        // Handle effect disables
-        createEffect(() =>
-            effectDisabled() ? ref.style.setProperty('display', 'none') : ref.style.removeProperty('display'),
-        )
+        // Handle effect disables & parallax scroll
+        createEffect(() => {
+            if (effectDisabled()) ref.style.setProperty('display', 'none')
+            else ref.style.removeProperty('display')
+
+            const parentHeight = ref.clientHeight
+            const handleScroll = () =>
+                requestAnimationFrame(() => {
+                    log('debug', 'Scroll position updated')
+                    ref.style.top = `-${
+                        (parentHeight / (props.scrollStiffness ?? 9.5)) *
+                        (window.scrollY / (document.body.clientHeight - window.innerHeight))
+                    }px`
+                })
+
+            window.addEventListener('scroll', handleScroll)
+            log('log', 'Component parallax scroll ready')
+            onCleanup(() => window.removeEventListener('scroll', handleScroll))
+        })
 
         // Handle initial animation
         createEffect(() => {
@@ -75,25 +90,6 @@ const GlowingBackground: Component<{
 
             const interval = setInterval(() => animateGlow(elements), props.reanimateInterval ?? 30000)
             onCleanup(() => clearInterval(interval))
-        })
-
-        // Handle scrolling parallax effect
-        onMount(() => {
-            if (effectDisabled()) return
-
-            const parentHeight = ref.clientHeight
-            const handleScroll = () =>
-                requestAnimationFrame(() => {
-                    log('debug', 'Scroll position updated')
-                    ref.style.top = `-${
-                        (parentHeight / (props.scrollStiffness ?? 9.5)) *
-                        (window.scrollY / (document.body.clientHeight - window.innerHeight))
-                    }px`
-                })
-
-            window.addEventListener('scroll', handleScroll)
-            log('log', 'Component parallax scroll ready')
-            onCleanup(() => window.removeEventListener('scroll', handleScroll))
         })
     }
 
