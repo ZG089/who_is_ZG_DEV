@@ -101,7 +101,7 @@ const GlowingBackground: Component<{
         <>
             <Portal mount={document.querySelector('main') ?? document.body}>
                 <div style="opacity: 0" aria-hidden="true" ref={handleRef} class={styles.Container}>
-                    <For each={[...Array(props.orbs ?? 20).keys()]}>{() => <div class={styles.Orb} />}</For>
+                    <For each={[...Array(props.orbs ?? 10).keys()]}>{() => <div class={styles.Orb} />}</For>
                 </div>
             </Portal>
             {props.children}
@@ -118,7 +118,7 @@ const animateGlow = (elements: HTMLElement[]) => {
         const xDisposition = Math.random() * 80
         const yDisposition = Math.random() * 50
         const factor = Math.random() > 0.5 ? -Math.random() : Math.random() + 0.5
-        const scale = Math.max(0.75, Math.random() * 1.5)
+        const scale = Math.max(0.75, Math.random() * 2)
 
         elem.setAttribute(
             'style',

@@ -1,9 +1,9 @@
 :root {
   --layer-bg: 1;
-  --layer-content: 2;
-  --layer-media: 3;
-  --layer-nav: 5;
-  --layer-effect: 6;
+  --layer-effect: 2;
+  --layer-content: 3;
+  --layer-media: 5;
+  --layer-nav: 6;
   --layer-overlay: 7;
 }
 
@@ -19,5 +19,6 @@ button {
 }
 
 img, svg {
+  position: relative;
   z-index: var(--layer-media);
 }
