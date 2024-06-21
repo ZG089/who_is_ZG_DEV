@@ -99,7 +99,7 @@ const GlowingBackground: Component<{
 
     return (
         <>
-            <Portal mount={document.querySelector('main') ?? document.body}>
+            <Portal>
                 <div style="opacity: 0" aria-hidden="true" ref={handleRef} class={styles.Container}>
                     <For each={[...Array(props.orbs ?? 10).keys()]}>{() => <div class={styles.Orb} />}</For>
                 </div>
