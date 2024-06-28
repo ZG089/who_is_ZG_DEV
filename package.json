@@ -26,9 +26,12 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.8.3",
-    "@vinxi/plugin-mdx": "https://gitpkg.now.sh/birkskyum/vinxi/packages/vinxi-mdx?mdx-3-compat",
+    "@vinxi/plugin-mdx": "^3.7.1",
     "sass": "^1.77.6",
     "solid-mdx": "^0.0.7"
   },
-  "trustedDependencies": ["@biomejs/biome", "esbuild"]
+  "trustedDependencies": ["@biomejs/biome", "esbuild"],
+  "patchedDependencies": {
+    "@vinxi/plugin-mdx@3.7.1": "patches/@vinxi%2Fplugin-mdx@3.7.1.patch"
+  }
 }

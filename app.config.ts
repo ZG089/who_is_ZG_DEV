@@ -1,13 +1,7 @@
 import { execSync, spawnSync } from 'child_process'
 import { defineConfig } from '@solidjs/start/config'
 import svgPlugin from 'vite-plugin-solid-svg'
-
-// @ts-expect-error: Missing types
-import mdxPkg from '@vinxi/plugin-mdx'
-const {
-    default: { withImports: mdx },
-} = mdxPkg
-
+import mdx from '@vinxi/plugin-mdx'
 import rehypePrettyCode from 'rehype-pretty-code'
 import remarkGfm from 'remark-gfm'
 import remarkSlug from 'remark-slug'
@@ -35,11 +29,13 @@ export default defineConfig({
             failOnError: true,
         },
     },
-    extensions: ['mdx', 'md'],
+    extensions: ['mdx'],
     vite: {
-        target: 'es2022',
+        build: {
+            target: 'es2022',
+        },
         plugins: [
-            mdx({})({
+            mdx.default.withImports({})({
                 jsx: true,
                 jsxImportSource: 'solid-js',
                 providerImportSource: 'solid-mdx',
