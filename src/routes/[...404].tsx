@@ -1,4 +1,4 @@
-import { Meta, Title } from '@solidjs/meta'
+import { Link, Meta, Title } from '@solidjs/meta'
 import { HttpStatusCode } from '@solidjs/start'
 import { type Component, Show } from 'solid-js'
 
@@ -11,7 +11,8 @@ import IconReport from '~/assets/icons/report.svg'
 import sharedStyles from '~/styles/shared.module.scss'
 
 const FourOhFourPage: Component<{ withoutDocTitle?: boolean }> = props => (
-    <Page>
+    <Page noCrawl noSetCanonical>
+        <Link rel="canonical" href="https://palmdevs.me" />
         <Show when={!props.withoutDocTitle}>
             <Title>404 • Palm (PalmDevs)</Title>
         </Show>
