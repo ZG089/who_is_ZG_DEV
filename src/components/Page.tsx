@@ -5,13 +5,19 @@ import { combineClassNames, undefinedIf } from '~/utils'
 
 import sharedStyles from '~/styles/shared.module.scss'
 import styles from './Page.module.scss'
-import { Meta } from '@solidjs/meta'
+import { Link, Meta } from '@solidjs/meta'
+import { useLocation } from '@solidjs/router'
 
-export const Page: Component<ComponentProps<'main'> & { noCrawl?: boolean }> = props => {
+export const Page: Component<ComponentProps<'main'> & { noCrawl?: boolean; noSetCanonical?: boolean; }> = props => {
+    const loc = useLocation()
+
     return (
         <Column as="main" flex centerHorizontal tabIndex="-1">
             <Show when={props.noCrawl}>
                 <Meta name="robots" content="noindex, nofollow" />
+            </Show>
+            <Show when={!props.noSetCanonical}>
+                <Link rel="canonical" href={`https://palmdevs.me${loc.pathname}`} />
             </Show>
             <Column {...props} centerHorizontal class={combineClassNames(props.class, styles.Content)}>
                 {props.children}
