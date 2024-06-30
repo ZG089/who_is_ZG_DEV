@@ -43,7 +43,7 @@ export default (() => {
                             <span aria-hidden="true">!</span>
                         </h1>
                         <p style="text-wrap: balance">
-                            I'm a 15-year-old self-taught full-stack developer and a UI/UX designer. I want to make
+                            I'm a 16-year-old self-taught full-stack developer and a UI/UX designer. I want to make
                             useful things look good and accessible to everyone.
                         </p>
                     </Column>
