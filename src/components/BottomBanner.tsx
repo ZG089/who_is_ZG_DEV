@@ -1,35 +1,41 @@
-import { Show, createEffect, createSignal, onMount, type JSX } from 'solid-js'
-import { Column, Row } from './Page'
+import { createEffect, createSignal, onMount, type JSX } from 'solid-js'
+import { Row } from './Page'
 
 import styles from './BottomBanner.module.scss'
 import { Button } from './buttons'
 
 const BottomBanner = (props: BottomBarProps) => {
-    const [open, setOpen] = createSignal(false)
+    const [shouldOpen, setShouldOpen] = createSignal(false)
     let ref: HTMLDivElement | undefined
 
-    createEffect(() => !localStorage.getItem(`bottom_bar_closed_${props.id}`) && setOpen(true))
+    onMount(() => {
+        if (localStorage.getItem(`bottom_bar_closed_${props.id}`)) return
+        ref!.style.bottom = `-${ref!.scrollHeight}px`
+        
+        setTimeout(() => {
+            setShouldOpen(true)
+            ref!.style.removeProperty('bottom')
+        }, 250)
+    })
 
     return (
-        <Show when={open()}>
-            <div ref={ref} class={styles.Container}>
-                <Row centerHorizontal centerVertical class={styles.Banner}>
-                    <div class={styles.Background} />
-                    <Column centerHorizontal>{props.children}</Column>
-                    <Button
-                        variant="secondary"
-                        onClick={() => {
-                            props.onClose?.()
-                            ref!.style.bottom = `-${ref!.scrollHeight + 1}px`
-                            localStorage.setItem(`bottom_bar_closed_${props.id}`, 'true')
-                            setTimeout(() => setOpen(false), 1000)
-                        }}
-                    >
-                        {props.closeLabel ?? 'Close'}
-                    </Button>
-                </Row>
-            </div>
-        </Show>
+        <div ref={ref} class={styles.Container} data-open={shouldOpen()} aria-hidden={shouldOpen()}>
+            <Row wrap centerHorizontal centerVertical gap="sm" class={styles.Banner}>
+                <div class={styles.Background} />
+                {props.children}
+                <Button
+                    variant="secondary"
+                    onClick={() => {
+                        props.onClose?.()
+                        ref!.style.bottom = `-${ref!.scrollHeight}px`
+                        localStorage.setItem(`bottom_bar_closed_${props.id}`, 'true')
+                        setTimeout(() => setShouldOpen(false), 1000)
+                    }}
+                >
+                    {props.closeLabel ?? 'Close'}
+                </Button>
+            </Row>
+        </div>
     )
 }
 

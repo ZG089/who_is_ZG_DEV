@@ -6,13 +6,23 @@
   left: 0;
   z-index: var(--layer-overlay);
   width: 100%;
-  transition: bottom var(--duration-short) var(--easing-quick);
+  transition: var(--duration-short) var(--easing-quick);
+  transition-property: opacity, bottom;
+
+  &[data-open="false"] {
+    opacity: 0;
+    bottom: -100%;
+  }
 }
 
 .Banner {
   position: relative;
   padding: var(--gap-small) var(--gap-medium);
   justify-content: space-between;
+
+  & > * {
+    min-width: fit-content;
+  }
 
   &::before {
     content: "";
