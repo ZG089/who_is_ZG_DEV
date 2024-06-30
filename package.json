@@ -33,6 +33,7 @@
   },
   "trustedDependencies": ["@biomejs/biome", "esbuild"],
   "patchedDependencies": {
-    "@vinxi/plugin-mdx@3.7.1": "patches/@vinxi%2Fplugin-mdx@3.7.1.patch"
+    "@vinxi/plugin-mdx@3.7.1": "patches/@vinxi%2Fplugin-mdx@3.7.1.patch",
+    "solid-mdx@0.0.7": "patches/solid-mdx@0.0.7.patch"
   }
 }
