@@ -3,7 +3,7 @@ import JSConfetti from 'js-confetti'
 import { format } from 'timeago.js'
 
 import { NavDock, BottomBanner, Row, Button } from '~/components'
-import { Birthday, BirthdayEnd } from '~/constants/personal'
+import { Birthday, BirthdayEnd, BirthdayLocale } from '~/constants/personal'
 import { ThemeContext } from '~/contexts'
 
 import IconBlog from '~/assets/icons/nav/blog.svg'
@@ -38,11 +38,11 @@ const GlobalLayout: Component<{ children: JSX.Element }> = props => {
                 return
             }
 
-            setTime(format(Birthday, 'countdown'))
+            setTime(format(Birthday, BirthdayLocale))
         }
 
         fn()
-        const interval = setInterval(() => fn, 1000)
+        const interval = setInterval(fn, 1000)
 
         onCleanup(() => clearInterval(interval))
     })
