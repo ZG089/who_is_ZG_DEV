@@ -8,5 +8,6 @@ export { default as NavDock } from './NavDock'
 export { default as ProjectCard } from './ProjectCard'
 export { default as Touchable } from './Touchable'
 export { default as Divider } from './Divider'
+export { default as BottomBanner } from './BottomBanner'
 
 export type IconType = Component<ComponentProps<'svg'>>
