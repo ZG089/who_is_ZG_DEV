@@ -66,22 +66,25 @@ const GlobalLayout: Component<{ children: JSX.Element }> = props => {
             />
             <Suspense>{props.children}</Suspense>
             <Show when={Date.now() < BirthdayEnd.getTime()}>
-                <BottomBanner id="2024-bd" closeLabel="Close" onClose={launchConfetti}>
-                    <Row gap="sm" flex wrap centerVertical style="justify-content: space-between">
-                        <p style="margin: 0">
-                            <Show
-                                when={time()}
-                                fallback={
-                                    <>
-                                        Today's my <span class={sharedStyles.GradientText}>birthday!</span> 🎂
-                                    </>
-                                }
-                            >
-                                It's <span class={sharedStyles.GradientText}>{time()}</span> before my birthday! 🎂
-                            </Show>
-                        </p>
-                        <Button onClick={launchConfetti}>Launch confetti 🎉</Button>
-                    </Row>
+                <BottomBanner
+                    id="2024-bd"
+                    closeLabel="Close"
+                    onClose={launchConfetti}
+                    // biome-ignore lint/correctness/useJsxKeyInIterable: This isn't React
+                    actions={[<Button onClick={launchConfetti}>Launch confetti 🎉</Button>]}
+                >
+                    <p style="margin: 0">
+                        <Show
+                            when={time()}
+                            fallback={
+                                <>
+                                    Today's my <span class={sharedStyles.GradientText}>birthday!</span> 🎂
+                                </>
+                            }
+                        >
+                            It's <span class={sharedStyles.GradientText}>{time()}</span> before my birthday! 🎂
+                        </Show>
+                    </p>
                 </BottomBanner>
             </Show>
         </>

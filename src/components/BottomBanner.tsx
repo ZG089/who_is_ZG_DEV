@@ -1,8 +1,8 @@
-import { createEffect, createSignal, onMount, type JSX } from 'solid-js'
+import { createSignal, onMount, type JSX, For } from 'solid-js'
 import { Row } from './Page'
+import { Button } from './buttons'
 
 import styles from './BottomBanner.module.scss'
-import { Button } from './buttons'
 
 const BottomBanner = (props: BottomBarProps) => {
     const [shouldOpen, setShouldOpen] = createSignal(false)
@@ -11,7 +11,7 @@ const BottomBanner = (props: BottomBarProps) => {
     onMount(() => {
         if (localStorage.getItem(`bottom_bar_closed_${props.id}`)) return
         ref!.style.bottom = `-${ref!.scrollHeight}px`
-        
+
         setTimeout(() => {
             setShouldOpen(true)
             ref!.style.removeProperty('bottom')
@@ -23,17 +23,20 @@ const BottomBanner = (props: BottomBarProps) => {
             <Row wrap centerHorizontal centerVertical gap="sm" class={styles.Banner}>
                 <div class={styles.Background} />
                 {props.children}
-                <Button
-                    variant="secondary"
-                    onClick={() => {
-                        props.onClose?.()
-                        ref!.style.bottom = `-${ref!.scrollHeight}px`
-                        localStorage.setItem(`bottom_bar_closed_${props.id}`, 'true')
-                        setTimeout(() => setShouldOpen(false), 1000)
-                    }}
-                >
-                    {props.closeLabel ?? 'Close'}
-                </Button>
+                <Row centerHorizontal wrap gap="sm">
+                    <For each={props.actions}>{action => action}</For>
+                    <Button
+                        variant="secondary"
+                        onClick={() => {
+                            props.onClose?.()
+                            ref!.style.bottom = `-${ref!.scrollHeight}px`
+                            localStorage.setItem(`bottom_bar_closed_${props.id}`, 'true')
+                            setTimeout(() => setShouldOpen(false), 1000)
+                        }}
+                    >
+                        {props.closeLabel ?? 'Close'}
+                    </Button>
+                </Row>
             </Row>
         </div>
     )
@@ -41,9 +44,10 @@ const BottomBanner = (props: BottomBarProps) => {
 
 export default BottomBanner
 
-export interface BottomBarProps {
+interface BottomBarProps {
     id: string
     children: JSX.Element | JSX.Element[]
+    actions?: JSX.Element[]
     closeLabel?: string
     onClose?: () => void
 }

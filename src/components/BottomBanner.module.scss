@@ -15,10 +15,9 @@
   }
 }
 
-.Banner {
+.Banner.Banner {
   position: relative;
   padding: var(--gap-small) var(--gap-medium);
-  justify-content: space-between;
 
   & > * {
     min-width: fit-content;
@@ -41,6 +40,7 @@
     margin-inline: auto;
     border-radius: var(--gap-small) var(--gap-small) 0 0;
     padding: var(--gap-small);
+    justify-content: space-between;
   }
 }
 
