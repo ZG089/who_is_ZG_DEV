@@ -30,6 +30,8 @@ const GlobalLayout: Component<{ children: JSX.Element }> = props => {
     onMount(() => {
         confetti = new JSConfetti({ canvas: document.getElementById('confetti-canvas') as HTMLCanvasElement })
 
+        if (Date.now() > Birthday.getTime()) return
+
         const interval = setInterval(() => {
             if (Date.now() >= Birthday.getTime()) {
                 launchConfetti()
