@@ -19,7 +19,7 @@
     "remark-slug": "^7.0.1",
     "solid-js": "^1.8.18",
     "timeago.js": "^4.0.2",
-    "vinxi": "^0.3.12",
+    "vinxi": "0.3.11",
     "vite-plugin-solid-svg": "^0.8.1"
   },
   "engines": {
