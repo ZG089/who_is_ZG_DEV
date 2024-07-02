@@ -1,10 +1,9 @@
-import { type Component, type JSX, Suspense, useContext, Show, onMount, onCleanup, createSignal } from 'solid-js'
+import { type Component, type JSX, Suspense, Show, onMount, onCleanup, createSignal } from 'solid-js'
 import JSConfetti from 'js-confetti'
 import { format } from 'timeago.js'
 
-import { NavDock, BottomBanner, Row, Button } from '~/components'
+import { NavDock, BottomBanner, Button } from '~/components'
 import { Birthday, BirthdayEnd, BirthdayLocale } from '~/constants/personal'
-import { ThemeContext } from '~/contexts'
 
 import IconBlog from '~/assets/icons/nav/blog.svg'
 import IconHome from '~/assets/icons/nav/home.svg'
@@ -14,7 +13,6 @@ import sharedStyles from '~/styles/shared.module.scss'
 
 const GlobalLayout: Component<{ children: JSX.Element }> = props => {
     const [time, setTime] = createSignal<string | null>('...')
-    const theme = useContext(ThemeContext)
 
     let canvasRef: HTMLCanvasElement | undefined
     let confetti: JSConfetti | undefined
@@ -23,7 +21,9 @@ const GlobalLayout: Component<{ children: JSX.Element }> = props => {
         confetti?.addConfetti({
             confettiRadius: 4,
             confettiNumber: 250,
-            confettiColors: theme.colorScheme === 'light' ? ['#29a873', '#007cfa'] : ['#4feaa9', '#57b7d9'],
+            confettiColors: ['primary', 'secondary'].map(token =>
+                getComputedStyle(document.documentElement).getPropertyValue(`--gradient-${token}`),
+            ),
         })
     }
 
@@ -67,9 +67,9 @@ const GlobalLayout: Component<{ children: JSX.Element }> = props => {
                 ]}
             />
             <Suspense>{props.children}</Suspense>
-            <Show when={Date.now() < BirthdayEnd.getTime()}>
+            <Show when={Date.now() > BirthdayEnd.getTime()}>
                 <BottomBanner
-                    id="2024-bd"
+                    id={`${new Date().getFullYear()}-bd`}
                     closeLabel="Close"
                     onClose={launchConfetti}
                     // biome-ignore lint/correctness/useJsxKeyInIterable: This isn't React

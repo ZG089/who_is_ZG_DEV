@@ -30,7 +30,7 @@ const BottomBanner = (props: BottomBarProps) => {
                         onClick={() => {
                             props.onClose?.()
                             ref!.style.bottom = `-${ref!.scrollHeight}px`
-                            localStorage.setItem(`bottom_bar_closed_${props.id}`, 'true')
+                            localStorage.setItem(`bottom_bar_closed:${props.id}`, 'true')
                             setTimeout(() => setShouldOpen(false), 1000)
                         }}
                     >

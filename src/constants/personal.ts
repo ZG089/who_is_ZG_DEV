@@ -2,6 +2,7 @@ import { register } from 'timeago.js'
 
 const year = new Date().getUTCFullYear()
 
+export const BirthDate = new Date('2008-07-01 00:00:00 UTC+7')
 export const Birthday = new Date(`${year}-07-01 00:00:00 UTC+7`)
 export const BirthdayEnd = new Date(`${year}-07-02 00:00:00 UTC+7`)
 export const BirthdayLocale = 'birthday-locale'

@@ -1,7 +1,9 @@
 :root, [data-theme="light"] {
   --bg: #f4f9ff;
 
-  --gradient: linear-gradient(230deg, #29a873 25%, #007cfa 70.95%);
+  --gradient: linear-gradient(230deg, var(--gradient-primary) 25%, var(--gradient-secondary) 70.95%);
+  --gradient-primary: #29a873;
+  --gradient-secondary: #007cfa;
 
   --neutral-highest: #000000;
   --neutral-high: #202020;
@@ -34,7 +36,8 @@
 [data-theme="dark"] {
   --bg: #0e1114;
 
-  --gradient: linear-gradient(230deg, #4feaa9 10.89%, #57b7d9 60.95%);
+  --gradient-primary: #4feaa9;
+  --gradient-secondary: #57b7d9;
 
   --neutral-highest: #ffffff;
   --neutral-high: #dddddd;

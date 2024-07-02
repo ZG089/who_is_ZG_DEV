@@ -6,9 +6,11 @@ import { Column, LinkButton, LinkIconButton, Page, ProjectCard, Row, Section, To
 import IconDiscord from '~/assets/icons/discord.svg'
 import IconMail from '~/assets/icons/mail.svg'
 
+import { BirthDate } from '~/constants/personal'
 import Projects from '~/constants/projects'
 import Skills from '~/constants/skills'
 import Socials from '~/constants/socials'
+import { getAge } from '~/utils'
 
 import GlowingBackground from '~/components/effects/GlowingBackground'
 import sharedStyles from '~/styles/shared.module.scss'
@@ -16,13 +18,15 @@ import sharedStyles from '~/styles/shared.module.scss'
 import styles from './(home).module.scss'
 
 export default (() => {
+    const age = getAge(BirthDate)
+
     return (
         <GlowingBackground>
             <Page>
                 <Title>Palm (PalmDevs)</Title>
                 <Meta
                     name="description"
-                    content="I'm a 16-year-old self-taught full-stack developer and a UI/UX designer. I want to make useful things look good and accessible to everyone. I am known for working in the open-source world, and designing applications."
+                    content={`I'm a ${age}-year-old self-taught full-stack developer and a UI/UX designer. I want to make useful things look good and accessible to everyone. I am known for working in the open-source world, and designing applications.`}
                 />
                 <Meta property="og:image" content="/assets/og/image.webp" />
                 <Meta property="og:image:width" content="500" />
@@ -43,7 +47,8 @@ export default (() => {
                             <span aria-hidden="true">!</span>
                         </h1>
                         <p style="text-wrap: balance">
-                            I'm a 16-year-old self-taught full-stack developer and a UI/UX designer. I want to make
+                            {/* TODO: Make this a constant, put in meta tag too and possibly stop using dayjs */}
+                            I'm a {age}-year-old self-taught full-stack developer and a UI/UX designer. I want to make
                             useful things look good and accessible to everyone.
                         </p>
                     </Column>
