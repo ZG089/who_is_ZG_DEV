@@ -28,7 +28,7 @@ const GlobalLayout: Component<{ children: JSX.Element }> = props => {
     }
 
     onMount(() => {
-        confetti = new JSConfetti({ canvas: document.getElementById('confetti-canvas') as HTMLCanvasElement })
+        confetti = new JSConfetti({ canvas: canvasRef })
 
         if (Date.now() > Birthday.getTime()) return
 
@@ -49,7 +49,6 @@ const GlobalLayout: Component<{ children: JSX.Element }> = props => {
     return (
         <>
             <canvas
-                id="confetti-canvas"
                 ref={canvasRef}
                 style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: var(--layer-overlay);"
             />
@@ -67,7 +66,7 @@ const GlobalLayout: Component<{ children: JSX.Element }> = props => {
                 ]}
             />
             <Suspense>{props.children}</Suspense>
-            <Show when={Date.now() > BirthdayEnd.getTime()}>
+            <Show when={Date.now() < BirthdayEnd.getTime()}>
                 <BottomBanner
                     id={`${new Date().getFullYear()}-bd`}
                     closeLabel="Close"
