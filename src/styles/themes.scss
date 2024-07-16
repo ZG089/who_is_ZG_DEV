@@ -47,10 +47,15 @@
   --neutral-variant-high: #81b0c3;
   --neutral-variant-low: #9da8ac;
 
-  --surface-highest: #2f3849;
-  --surface-high: #252b39;
-  --surface-medium: #1b202c;
-  --surface-low: #151922;
+  --surface-highest-high-opacity: hsla(216, 20%, 25%, 0.65);
+  --surface-high-high-opacity: hsla(216, 18%, 23%, 0.65);
+  --surface-medium-high-opacity: hsla(220, 23%, 19%, 0.65);
+  --surface-low-high-opacity: hsla(220, 20%, 15%, 0.65);
+
+  --surface-highest: hsla(216, 20%, 34%, 0.15);
+  --surface-high: hsla(216, 18%, 32%, 0.15);
+  --surface-medium: hsla(220, 23%, 28%, 0.15);
+  --surface-low: hsla(220, 20%, 24%, 0.15);
 
   --primary: #4ac9ff;
   --on-primary: #003247;

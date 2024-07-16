@@ -22,36 +22,31 @@
 
   transition: var(--duration-short);
   transition-property: background-color, outline-color;
-  
+
   &:has(.ActiveItem) .Highlight {
     opacity: 1;
   }
-  
+
   &[data-scrolled="true"] {
     background-color: var(--surface-low);
     outline-color: var(--surface-medium);
-    
+
     & .Highlight {
       background-color: var(--surface-high);
     }
-    
+
     @media not print and (prefers-contrast: more) and (prefers-reduced-transparency: reduce) and (prefers-reduced-motion: reduce) {
-      -webkit-backdrop-filter: blur(var(--gap-small));
-      backdrop-filter: blur(var(--gap-small));
-      background-color: color-mix(in srgb, var(--surface-low), transparent 10%);
+      transition-property: background-color, outline-color, backdrop-filter,
+        -webkit-backdrop-filter;
+      background-color: var(--surface-low-high-opacity, var(--surface-low));
       
       [data-theme="dark"] & {
-        transition-property: background-color, outline-color, backdrop-filter, -webkit-backdrop-filter;
-        -webkit-backdrop-filter: blur(var(--gap-small)) brightness(80%);
-        backdrop-filter: blur(var(--gap-small)) brightness(80%);
+        -webkit-backdrop-filter: blur(var(--gap-medium)) brightness(60%);
+        backdrop-filter: blur(var(--gap-medium)) brightness(60%);
       }
 
       & .Highlight {
-        background-color: color-mix(
-          in srgb,
-          var(--surface-high),
-          transparent 20%
-        );
+        background-color: var(--surface-medium-high-opacity, var(--surface-medium));
       }
     }
   }

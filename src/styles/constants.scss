@@ -34,9 +34,14 @@
   --duration-longer: 1s;
 
   // Easings
+  /* Default easing, best for most animations */
   --easing: cubic-bezier(0.19, 1, 0.22, 1);
+  /* Bouncy easing, best for interaction animations */
   --easing-bounce: cubic-bezier(0, 1.25, 0.35, 1);
+  /* Quick easing, best for short animations */
   --easing-quick: cubic-bezier(0, 0.6, 0.1, 1);
+  /* Very quick easing, best for short animations with a lot of movement */
+  --easing-very-quick: cubic-bezier(0, 0.85, 0, 1);
 
   // Interaction effects
   --interaction-click-scale: 0.985;
