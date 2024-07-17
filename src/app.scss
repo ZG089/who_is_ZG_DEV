@@ -4,10 +4,9 @@
 @import url("./styles/layers.scss");
 
 :root {
-  font-size: 0.925rem;
   --themeable-prop-content: color, fill, stroke-color;
   --themeable-prop-layout: background-color, outline-color, border-color,
-    box-shadow;
+  box-shadow;
 }
 
 p,
@@ -26,7 +25,7 @@ img,
 svg {
   transition-duration: 0.1s;
   transition-property: var(--themeable-prop-content),
-    var(--themeable-prop-layout);
+  var(--themeable-prop-layout);
 }
 
 body,
@@ -44,11 +43,14 @@ main {
   -webkit-tap-highlight-color: transparent;
   // Fixes precision issues with outline
   outline-offset: -1px;
+  backface-visibility: hidden;
 }
 
 :root {
   color-scheme: dark light;
+  font-size: 0.925rem;
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
   accent-color: var(--primary);
   // Estimated height for NavDock + its margins
   scroll-padding: 6rem;
