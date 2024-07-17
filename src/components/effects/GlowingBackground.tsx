@@ -35,10 +35,7 @@ const GlowingBackground: Component<{
 
     // More conditions to disable effects
     createEffect(() => {
-        if ('mozInnerScreenX' in window && typeof window.mozInnerScreenX !== 'undefined') {
-            // Firefox with low opacity gradient sucks
-            log('log', 'Firefox browser detected, disabling')
-        } else if (theme.colorScheme !== 'dark') {
+        if (theme.colorScheme !== 'dark') {
             log('log', 'Not using dark color scheme, disabling')
         } else {
             log('log', 'No conditions matched, effect is enabled')
