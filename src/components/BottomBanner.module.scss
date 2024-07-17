@@ -6,7 +6,7 @@
   left: 0;
   z-index: var(--layer-overlay);
   width: 100%;
-  transition: var(--duration-short) var(--easing-quick);
+  transition: var(--duration-short) var(--easing-very-quick);
   transition-property: opacity, bottom;
 
   &[data-open="false"] {

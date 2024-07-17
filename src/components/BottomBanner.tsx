@@ -1,44 +1,52 @@
-import { createSignal, onMount, type JSX, For } from 'solid-js'
+import { createSignal, onMount, type JSX, For, createEffect } from 'solid-js'
 import { Row } from './Page'
 import { Button } from './buttons'
 
 import styles from './BottomBanner.module.scss'
+import { Portal } from 'solid-js/web'
 
 const BottomBanner = (props: BottomBarProps) => {
     const [shouldOpen, setShouldOpen] = createSignal(false)
     let ref: HTMLDivElement | undefined
 
-    onMount(() => {
-        if (localStorage.getItem(`bottom_bar_closed_${props.id}`)) return
-        ref!.style.bottom = `-${ref!.scrollHeight}px`
+    const handleRef = (el: HTMLDivElement) => {
+        ref = el
 
-        setTimeout(() => {
-            setShouldOpen(true)
-            ref!.style.removeProperty('bottom')
-        }, 250)
-    })
+        if (localStorage.getItem(`bottom_bar_closed:${props.id}`)) return
+
+        requestAnimationFrame(() => {
+            el!.style.bottom = `-${getComputedStyle(el, ':before').height}px`
+
+            setTimeout(() => {
+                setShouldOpen(true)
+                el!.style.removeProperty('bottom')
+            }, 250)
+        })
+    }
 
     return (
-        <div ref={ref} class={styles.Container} data-open={shouldOpen()} aria-hidden={shouldOpen()}>
-            <Row wrap centerHorizontal centerVertical gap="sm" class={styles.Banner}>
-                <div class={styles.Background} />
-                {props.children}
-                <Row centerHorizontal wrap gap="sm">
-                    <For each={props.actions}>{action => action}</For>
-                    <Button
-                        variant="secondary"
-                        onClick={() => {
-                            props.onClose?.()
-                            ref!.style.bottom = `-${ref!.scrollHeight}px`
-                            localStorage.setItem(`bottom_bar_closed:${props.id}`, 'true')
-                            setTimeout(() => setShouldOpen(false), 1000)
-                        }}
-                    >
-                        {props.closeLabel ?? 'Close'}
-                    </Button>
+        <Portal>
+            <div ref={handleRef} class={styles.Container} data-open={shouldOpen()} aria-hidden={shouldOpen()}>
+                <Row wrap centerHorizontal centerVertical gap="sm" class={styles.Banner}>
+                    <div class={styles.Background} />
+                    {props.children}
+                    <Row centerHorizontal wrap gap="sm">
+                        <For each={props.actions}>{action => action}</For>
+                        <Button
+                            variant="secondary"
+                            onClick={() => {
+                                props.onClose?.()
+                                ref!.style.bottom = `-${getComputedStyle(ref!, ':before').height}px`
+                                localStorage.setItem(`bottom_bar_closed:${props.id}`, 'true')
+                                setTimeout(() => setShouldOpen(false), 1000)
+                            }}
+                        >
+                            {props.closeLabel ?? 'Close'}
+                        </Button>
+                    </Row>
                 </Row>
-            </Row>
-        </div>
+            </div>
+        </Portal>
     )
 }
 
