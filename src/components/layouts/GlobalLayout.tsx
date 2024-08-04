@@ -10,6 +10,7 @@ import IconHome from '~/assets/icons/nav/home.svg'
 import IconSource from '~/assets/icons/source.svg'
 
 import sharedStyles from '~/styles/shared.module.scss'
+import { ConfettiContext } from '~/contexts'
 
 const GlobalLayout: Component<{ children: JSX.Element }> = props => {
     const [time, setTime] = createSignal<string | null>('...')
@@ -47,7 +48,7 @@ const GlobalLayout: Component<{ children: JSX.Element }> = props => {
     })
 
     return (
-        <>
+        <ConfettiContext.Provider value={{ launch: launchConfetti }}>
             <canvas
                 ref={canvasRef}
                 style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: var(--layer-overlay);"
@@ -88,7 +89,7 @@ const GlobalLayout: Component<{ children: JSX.Element }> = props => {
                     </p>
                 </BottomBanner>
             </Show>
-        </>
+        </ConfettiContext.Provider>
     )
 }
 

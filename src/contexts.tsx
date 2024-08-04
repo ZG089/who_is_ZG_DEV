@@ -61,6 +61,10 @@ export const ThemeProvider: Component<{ children: JSX.Element | JSX.Element[] }>
     return <ThemeContext.Provider value={theme}>{props.children}</ThemeContext.Provider>
 }
 
+export const ConfettiContext = createContext<{ launch: () => void }>({
+    launch: () => {},
+})
+
 export interface ThemeStruct {
     theme: ThemeTheme
     colorScheme: ThemeColorScheme
