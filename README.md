@@ -63,3 +63,5 @@ Sometimes build caches don't get invalidated. You'll need to remove the followin
 This status is to check whether files have been modified or not after the current commit. This exists to **prevent developers forgetting to add files to commits**, or if the source code before building and deploying has been touched by a host (for debugging purposes).
 
 You can view integrity and other information in the console.
+
+Thanks to : @PalmDevs
