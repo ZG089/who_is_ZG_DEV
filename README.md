@@ -1,6 +1,6 @@
 # 🌐 Website
 
-It's my website! I think having a website is cool, so I'm trying to make it real.
+[UNDER CONSTRUCTION].
 
 - 🖌️ Designed (with love and care) by [me](https://github.com/PalmDevs)
 - 🏗️ Built with [SolidJS](https://www.solidjs.com/) and [SolidStart](https://start.solidjs.com)
